@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://bly5u2g2hub8c"]
+[gd_scene load_steps=2 format=3 uid="uid://bly5u2g2hub8c"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_rub1s"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_rub1s")
 
 [node name="UI" type="Node2D" parent="."]
 
-[node name="Screen" type="Node2D" parent="."]
+[node name="Station" type="Node2D" parent="."]

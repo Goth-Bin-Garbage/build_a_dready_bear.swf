@@ -10,7 +10,7 @@ func get_random_doll_color() -> GameData.DollColor:
 
 func get_random_doll_pattern() -> GameData.DollPattern:
 	return GameData.DollPattern.values().pick_random()
-	
+
 func get_random_doll_headshape() -> GameData.DollHeadShape:
 	return GameData.DollHeadShape.values().pick_random()
 

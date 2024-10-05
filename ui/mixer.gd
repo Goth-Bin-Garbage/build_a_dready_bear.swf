@@ -33,7 +33,7 @@ func _process(delta):
 	
 	if dragging:
 		global_position = get_viewport().get_mouse_position()
-	else: # snap to positions along bottom of screen
+	else:
 		global_position = lerp(
 			global_position,
 			Vector2(snap_x, Global.window_size.y - offset_from_bottom),

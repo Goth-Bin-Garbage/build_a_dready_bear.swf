@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://2pyds7hom2cf"]
+
+[ext_resource type="Texture2D" uid="uid://8pwpj5t4qx76" path="res://sprites/mixer.png" id="1_7bdv8"]
+[ext_resource type="Script" path="res://ui/mixer.gd" id="1_v1nhw"]
+
+[node name="Mixer" type="Node2D"]
+script = ExtResource("1_v1nhw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7bdv8")

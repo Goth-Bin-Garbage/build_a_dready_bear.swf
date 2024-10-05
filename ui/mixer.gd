@@ -11,13 +11,14 @@ extends Node2D
 @onready var snap_x : int
 @onready var old_snap_x : int
 
+@onready var scale_normal : Vector2 = Vector2(1,1)
+@onready var scale_dragging : Vector2 = Vector2(1.25, 1.25)
+
 @onready var color : GameData.DollColor
 @onready var pattern : GameData.DollPattern
 @onready var head_shape : GameData.DollHeadShape
 @onready var eyes : GameData.DollEyes
 
-@onready var scale_normal : Vector2 = Vector2(1,1)
-@onready var scale_dragging : Vector2 = Vector2(1.25, 1.25)
 
 func _ready():
 	adjust_snap_x()

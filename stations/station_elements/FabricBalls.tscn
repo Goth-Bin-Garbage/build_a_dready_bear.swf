@@ -8,6 +8,7 @@ radius = 34.0588
 
 [node name="FabricBalls" type="Node2D"]
 script = ExtResource("1_1p1n8")
+plucked = null
 
 [node name="Debug" type="ColorRect" parent="."]
 visible = false
@@ -23,6 +24,9 @@ texture = ExtResource("2_yihwr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_kukia")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://tei5rxtfxt5g"]
+[gd_scene load_steps=3 format=3 uid="uid://tei5rxtfxt5g"]
+
+[ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_phd72"]
+[ext_resource type="AudioStream" uid="uid://u4bmsh0hu3va" path="res://audio/music/heads.mp3" id="2_hvqm0"]
 
 [node name="HeadStation" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("1_phd72")]
+stream = ExtResource("2_hvqm0")

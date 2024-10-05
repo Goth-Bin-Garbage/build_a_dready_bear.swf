@@ -12,7 +12,7 @@ extends Node2D
 @onready var old_snap_x : int
 
 @onready var scale_normal : Vector2 = Vector2(1,1)
-@onready var scale_dragging : Vector2 = Vector2(1.25, 1.25)
+@onready var scale_dragging : Vector2 = Vector2(1.5, 1.5)
 
 @onready var color : GameData.DollColor
 @onready var pattern : GameData.DollPattern

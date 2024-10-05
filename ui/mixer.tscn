@@ -10,7 +10,7 @@ size = Vector2(92, 180)
 script = ExtResource("1_v1nhw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.92, 1.92)
+scale = Vector2(0.0506024, 0.0506024)
 texture = ExtResource("1_7bdv8")
 
 [node name="Area2D" type="Area2D" parent="."]

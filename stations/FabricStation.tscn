@@ -16,14 +16,21 @@ texture = ExtResource("2_56fkc")
 [node name="FabricBalls" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
 
 [node name="FabricBalls2" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+color = 1
 
 [node name="FabricBalls3" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+color = 2
 
 [node name="FabricBalls4" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+fabric_type = "Pattern"
 
 [node name="FabricBalls5" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+fabric_type = "Pattern"
+pattern = 1
 
 [node name="FabricBalls6" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+fabric_type = "Pattern"
+pattern = 2
 
 [node name="PositionMarkers" type="Node2D" parent="."]
 

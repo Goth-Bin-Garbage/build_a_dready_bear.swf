@@ -11,6 +11,10 @@ extends Node2D
 @onready var snap_x : int
 @onready var old_snap_x : int
 
+@onready var color : GameData.DollColor
+@onready var pattern : GameData.DollPattern
+@onready var head_shape : GameData.DollHeadShape
+@onready var eyes : GameData.DollEyes
 
 func _ready():
 	adjust_snap_x()

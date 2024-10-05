@@ -1,7 +1,7 @@
 extends Node2D
 
 # how many mixers can be placed along the bottom of the screen
-@onready var mixer_positions : int = 6
+@onready var mixer_positions : int = 5
 @onready var offset_from_bottom : int = 50
 @onready var snap_weight : float = 0.15
 

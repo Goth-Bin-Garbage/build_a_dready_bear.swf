@@ -1,27 +1,53 @@
 extends Node2D
 
+# how many mixers can be placed along the bottom of the screen
 @onready var mixer_positions : int = 6
+@onready var offset_from_bottom : int = 50
+@onready var snap_weight : float = 0.15
 
 @onready var mouse_over : bool = false
 @onready var dragging : bool = false
 
+@onready var snap_x : int
+@onready var old_snap_x : int
+
+
 func _ready():
-	pass # Replace with function body.
+	adjust_snap_x()
 
 
 func _process(delta):
 	if dragging:
+		adjust_snap_x()
+	
+	if Input.is_action_just_released("click"):
+		if !dragging and mouse_over:
+			old_snap_x = snap_x
+			dragging = true
+		elif dragging:
+			for other_mixer in get_parent().get_children():
+				if other_mixer != self and other_mixer.snap_x == snap_x:
+					snap_x = old_snap_x
+					break
+			dragging = false
+	
+	if dragging:
 		global_position = get_viewport().get_mouse_position()
 	else: # snap to positions along bottom of screen
-		var _w = 800 / mixer_positions
-		var _x : int = clamp(round(global_position.x / _w) * _w, _w, 800 - _w)
-		global_position = lerp(global_position, Vector2(_x, 600 - 50), .2)
-	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		if mouse_over:
-			dragging = true
-	else:
-		dragging = false
+		global_position = lerp(
+			global_position,
+			Vector2(snap_x, Global.window_size.y - offset_from_bottom),
+			snap_weight
+		)
+
+
+func adjust_snap_x():
+	var _snap_width = Global.window_size.x / (mixer_positions+1)
+	snap_x = clamp(
+		round(global_position.x / _snap_width) * _snap_width,
+		_snap_width,
+		Global.window_size.x - _snap_width
+	)
 
 
 func _on_area_2d_mouse_entered():

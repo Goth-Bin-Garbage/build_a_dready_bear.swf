@@ -1,11 +1,13 @@
 extends Node2D
 
 @onready var loaded_station_id : String
-@onready var loaded_station : Node2D
+
+@onready var station_node : Node2D = $Station
+@onready var station_instance : Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# load_station("FabricStation")
+	load_station("FabricStation")
 	pass
 
 
@@ -15,8 +17,8 @@ func _process(delta):
 
 
 func unload_station() -> void:
-	if loaded_station != null:
-		loaded_station.queue_free()
+	if station_instance != null:
+		station_instance.queue_free()
 
 
 func load_station(station_id : String) -> void:
@@ -24,4 +26,6 @@ func load_station(station_id : String) -> void:
 		return
 	unload_station()
 	var new_station = load("res://stations/" + station_id + ".tscn")
+	station_instance = new_station.instantiate()
+	station_node.add_child(station_instance)
 	loaded_station_id = station_id

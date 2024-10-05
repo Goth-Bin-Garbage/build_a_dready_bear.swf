@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://2pyds7hom2cf"]
+[gd_scene load_steps=4 format=3 uid="uid://2pyds7hom2cf"]
 
 [ext_resource type="Texture2D" uid="uid://8pwpj5t4qx76" path="res://sprites/mixer.png" id="1_7bdv8"]
 [ext_resource type="Script" path="res://ui/mixer.gd" id="1_v1nhw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayyef"]
+size = Vector2(142, 180)
 
 [node name="Mixer" type="Node2D"]
 script = ExtResource("1_v1nhw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.92, 1.92)
 texture = ExtResource("1_7bdv8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ayyef")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

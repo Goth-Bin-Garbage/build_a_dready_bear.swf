@@ -1,5 +1,7 @@
 extends Node
 
+@onready var main : Node2D = get_tree().get_root().get_node("Main")
+
 # game stuff
 func get_doll_color(doll_color : GameData.DollColor) -> Color:
 	return GameData.doll_colors[doll_color]

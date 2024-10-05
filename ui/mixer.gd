@@ -11,10 +11,14 @@ extends Node2D
 @onready var snap_x : int
 @onready var old_snap_x : int
 
+@onready var scale_normal : Vector2 = Vector2(1,1)
+@onready var scale_dragging : Vector2 = Vector2(1.25, 1.25)
+
 @onready var color : GameData.DollColor
 @onready var pattern : GameData.DollPattern
 @onready var head_shape : GameData.DollHeadShape
 @onready var eyes : GameData.DollEyes
+
 
 func _ready():
 	adjust_snap_x()
@@ -23,6 +27,8 @@ func _ready():
 func _process(delta):
 	if dragging:
 		adjust_snap_x()
+		
+	scale = lerp(scale, scale_normal if !dragging else scale_dragging, .15)
 	
 	if Input.is_action_just_released("click"):
 		if !dragging and mouse_over:

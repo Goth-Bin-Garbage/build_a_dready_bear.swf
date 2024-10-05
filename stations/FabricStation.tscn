@@ -16,41 +16,38 @@ texture = ExtResource("2_56fkc")
 [node name="FabricBalls" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
 
 [node name="FabricBalls2" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+color = 1
 
 [node name="FabricBalls3" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+color = 2
 
 [node name="FabricBalls4" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+fabric_type = "Pattern"
 
 [node name="FabricBalls5" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+fabric_type = "Pattern"
+pattern = 1
 
 [node name="FabricBalls6" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
-
-[node name="FabricBalls7" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
-
-[node name="FabricBalls8" parent="FabricBalls" instance=ExtResource("2_e2f0m")]
+fabric_type = "Pattern"
+pattern = 2
 
 [node name="PositionMarkers" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(200, 38)
+position = Vector2(262, 77)
 
 [node name="Marker2D2" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(124, 110)
+position = Vector2(156, 185)
 
 [node name="Marker2D3" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(85, 239)
+position = Vector2(253, 306)
 
 [node name="Marker2D4" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(178, 324)
+position = Vector2(542, 71)
 
 [node name="Marker2D5" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(524, 20)
+position = Vector2(650, 197)
 
 [node name="Marker2D6" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(620, 82)
-
-[node name="Marker2D7" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(665, 216)
-
-[node name="Marker2D8" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(633, 350)
+position = Vector2(539, 303)

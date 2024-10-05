@@ -3,24 +3,27 @@ extends Node2D
 @export var plucked : bool = false
 @onready var mouse_on : bool = false
 @onready var clicked_on : bool = false
+@onready var clickable : bool = true
 
 var offset : Vector2
 @export var home_pos : Vector2
-@export var fabric_type
+@export var fabric_type : String = "Color"
+@export var color : GameData.DollColor = GameData.DollColor.RED
+@export var pattern : GameData.DollPattern = GameData.DollPattern.STRIPE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate_fabric()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if plucked && !clicked_on:
 		self.position.y += 0.1
 		
-		if self.position.y >= 450:
+		if self.position.y >= 500:
 			regen_fabric()
-		
-	if mouse_on:
+	
+	if mouse_on && clickable:
 		if Input.is_action_just_pressed("left_mouse_click"):
 			offset = get_global_mouse_position() - global_position
 			plucked = true
@@ -31,6 +34,12 @@ func _process(delta):
 		
 		elif Input.is_action_just_released("left_mouse_click"):
 			clicked_on = false
+	
+	if !clickable:
+		if self.scale != Vector2(1.0,1.0):
+			var time_spent = 8 - $Timer.time_left
+			var time_fraction = time_spent / 8.0
+			self.scale = Vector2(time_fraction, time_fraction)
 
 func _on_area_2d_mouse_entered():
 	mouse_on = true
@@ -38,8 +47,12 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	mouse_on = false
 
-func generate_fabric():
-	
-
 func regen_fabric():
-	pass
+	position = home_pos
+	self.scale = Vector2(0,0)
+	plucked = false
+	clickable = false
+	$Timer.start()
+
+func _on_timer_timeout():
+	clickable = true

@@ -4,6 +4,7 @@ extends Node
 func get_doll_color(doll_color : GameData.DollColor) -> Color:
 	return GameData.doll_colors[doll_color]
 
+# get random doll features...
 func get_random_doll_color() -> GameData.DollColor:
 	return GameData.DollColor.values().pick_random()
 

@@ -7,14 +7,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for r in range(0,8):
+	for r in range(0,6):
 		balls[r].position = spawns[r].position
+		balls[r].home_pos = spawns[r].position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if balls.count() != 8:
-		regen_fabric()
-
-func regen_fabric():
-	for r in range(0,8):
-		
+	pass

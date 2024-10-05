@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://wvb1kyxrajvi"]
+[gd_scene load_steps=2 format=3 uid="uid://wvb1kyxrajvi"]
+
+[ext_resource type="PackedScene" uid="uid://2pyds7hom2cf" path="res://ui/mixer.tscn" id="1_ebuj0"]
 
 [node name="UI" type="Node2D"]
+
+[node name="Mixers" type="Node2D" parent="."]
+
+[node name="Mixer" parent="Mixers" instance=ExtResource("1_ebuj0")]
+position = Vector2(90, 576)

@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://peuqdai1wmub"]
+[gd_scene load_steps=4 format=3 uid="uid://peuqdai1wmub"]
+
+[ext_resource type="Script" path="res://ui/order.gd" id="1_2yje7"]
+[ext_resource type="Texture2D" uid="uid://dp3tbs85g74ix" path="res://sprites/order_note.png" id="1_mrj2b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m6q8c"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="Order" type="Node2D"]
+script = ExtResource("1_2yje7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 93)
+texture = ExtResource("1_mrj2b")
+
+[node name="EyesLabel" type="Label" parent="."]
+offset_left = -30.0
+offset_top = 132.0
+offset_right = 21.0
+offset_bottom = 155.0
+text = "eyes"
+label_settings = SubResource("LabelSettings_m6q8c")
+
+[node name="PatternLabel" type="Label" parent="."]
+offset_left = -32.0
+offset_top = 101.0
+offset_right = 27.0
+offset_bottom = 124.0
+text = "pattern"
+label_settings = SubResource("LabelSettings_m6q8c")
+
+[node name="HeadLabel" type="Label" parent="."]
+offset_left = -29.0
+offset_top = 38.0
+offset_right = 30.0
+offset_bottom = 61.0
+text = "head"
+label_settings = SubResource("LabelSettings_m6q8c")
+
+[node name="ColorLabel" type="Label" parent="."]
+offset_left = -32.0
+offset_top = 70.0
+offset_right = 27.0
+offset_bottom = 93.0
+text = "color"
+label_settings = SubResource("LabelSettings_m6q8c")

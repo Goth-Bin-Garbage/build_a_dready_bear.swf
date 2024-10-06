@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://wvb1kyxrajvi"]
+[gd_scene load_steps=4 format=3 uid="uid://wvb1kyxrajvi"]
 
+[ext_resource type="PackedScene" uid="uid://peuqdai1wmub" path="res://ui/order.tscn" id="1_3k0n5"]
 [ext_resource type="PackedScene" uid="uid://2pyds7hom2cf" path="res://ui/mixer.tscn" id="1_ebuj0"]
 [ext_resource type="Script" path="res://ui/station_buttons.gd" id="2_3lymi"]
 
 [node name="UI" type="Node2D"]
+
+[node name="Orders" type="Node2D" parent="."]
+
+[node name="Order1" parent="Orders" instance=ExtResource("1_3k0n5")]
+position = Vector2(737, 16)
+
+[node name="Order2" parent="Orders" instance=ExtResource("1_3k0n5")]
+position = Vector2(625, 16)
 
 [node name="Mixers" type="Node2D" parent="."]
 

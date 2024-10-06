@@ -5,13 +5,11 @@ extends Node2D
 @onready var station_node : Node2D = $Station
 @onready var station_instance : Node2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	load_station(Global.get_station_scene_file(GameData.Station.FABRIC))
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 

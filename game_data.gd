@@ -15,7 +15,7 @@ var station_scene_ids : Dictionary = {
 enum DollColor {RED, BLUE, GREEN, YELLOW}
 enum DollPattern {STRIPE, GRID, POLKA}
 enum DollHeadShape {BEAR, KITTO, FROG, BAT, MOUSE}
-enum DollEyes {EZEYALEA, BUTTONS}
+enum DollEyes {EYEZALEA, BUTTONS}
 
 var doll_colors : Dictionary = {
 	DollColor.RED : Color.RED,

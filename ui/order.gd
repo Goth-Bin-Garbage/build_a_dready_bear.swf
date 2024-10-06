@@ -1,9 +1,16 @@
 extends Node
 
-@onready var color := Global.get_random_doll_color()
-@onready var pattern := Global.get_random_doll_pattern()
-@onready var head_shape := Global.get_random_doll_headshape()
-@onready var eyes := Global.get_random_doll_eyes()
+var color := Global.get_random_doll_color()
+var pattern := Global.get_random_doll_pattern()
+var head_shape := Global.get_random_doll_headshape()
+var eyes := Global.get_random_doll_eyes()
+var eyes_count : int = [1,2,3].pick_random()
+
+var given_color := GameData.DollColor.NONE
+var given_pattern := GameData.DollPattern.NONE
+var given_head := GameData.DollHeadShape.NONE
+var given_eyes := GameData.DollEyes.NONE
+var given_eyes_count := 0
 
 @onready var sprite_normal := $SpriteNode/SpriteNormal
 @onready var sprite_crumpled := $SpriteNode/SpriteCrumpled
@@ -15,12 +22,15 @@ extends Node
 
 @onready var anim_player := $AnimationPlayer
 
-@onready var mixer_over_me : Node2D
+var mixer_over_me : Node2D
+
+var mixer_inside_me : Node2D # used after a mixer is assigned to this order
+# then checks if the mixer matches the order
 
 @onready var area := $SpriteNode/Area2D
 
-@onready var scale_normal := Vector2(1, 1)
-@onready var scale_hovering := Vector2(1.25, 1.25)
+var scale_normal := Vector2(1, 1)
+var scale_hovering := Vector2(1.25, 1.25)
 
 var mouse_inside := false
 var index_in_main_order_array := 0
@@ -72,12 +82,20 @@ func _process(delta):
 		
 	self.scale = lerp(self.scale, scale_hovering if i_am_the_chosen_one else scale_normal, .2)
 	
-	if !Global.dragging_something and i_am_the_chosen_one:
+	if !Global.dragging_something and i_am_the_chosen_one and !mixer_inside_me:
 		animate_then_delete()
 		
 		var _y = Global.window_size.y + 100
 		mixer_over_me.global_position = Vector2(mixer_over_me.old_snap_x, _y)
 		mixer_over_me.emit_puff_particles()
+		
+		self.mixer_inside_me = mixer_over_me
+		self.given_color = mixer_inside_me.color
+		self.given_pattern = mixer_inside_me.pattern
+		self.given_head = mixer_inside_me.head_shape
+		self.given_eyes = mixer_inside_me.eyes
+		self.given_eyes_count = mixer_inside_me.eyes_count
+		self.mixer_inside_me.reset_mix()
 
 
 func animate_then_delete() -> void:
@@ -108,6 +126,23 @@ func calculate_x() -> float:
 	return Global.window_size.x + _o - _w * i
 
 
+func check_order() -> float:
+	var score := 0.0
+	
+	if self.color == self.given_color:
+		score += 0.2
+	if self.pattern == self.given_pattern:
+		score += 0.2
+	if self.head_shape == self.given_head:
+		score += 0.2
+	if self.eyes == self.given_eyes:
+		score += 0.2
+	if self.eyes_count == self.given_eyes_count:
+		score += 0.2
+	
+	return score
+
+
 func _on_area_2d_area_entered(area):
 	if area.is_in_group('mixer'):
 		mixer_over_me = area.get_parent()
@@ -119,6 +154,7 @@ func _on_area_2d_area_exited(area):
 
 
 func _on_area_2d_mouse_entered():
+	print("color: ", color, ", pattern: ", pattern, ", head: ", head_shape, ", eyes: ", eyes, ", #eyes: ", eyes_count)
 	mouse_inside = true
 	
 
@@ -128,6 +164,7 @@ func _on_area_2d_mouse_exited():
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "order_remove":
+		print("score : ", check_order())
 		queue_free()
 
 

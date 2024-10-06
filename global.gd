@@ -15,16 +15,16 @@ func get_doll_color(doll_color : GameData.DollColor) -> Color:
 
 # get random doll features...
 func get_random_doll_color() -> GameData.DollColor:
-	return GameData.DollColor.values().pick_random()
+	return GameData.DollColor.values().slice(1).pick_random()
 
 func get_random_doll_pattern() -> GameData.DollPattern:
-	return GameData.DollPattern.values().pick_random()
+	return GameData.DollPattern.values().slice(1).pick_random()
 
 func get_random_doll_headshape() -> GameData.DollHeadShape:
-	return GameData.DollHeadShape.values().pick_random()
+	return GameData.DollHeadShape.values().slice(1).pick_random()
 
 func get_random_doll_eyes() -> GameData.DollEyes:
-	return GameData.DollEyes.values().pick_random()
+	return GameData.DollEyes.values().slice(1).pick_random()
 	
 func get_station_scene_file(station : GameData.Station) -> String:
 	return GameData.station_scene_ids[station]

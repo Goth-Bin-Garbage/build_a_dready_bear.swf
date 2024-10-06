@@ -23,16 +23,18 @@ func _process(delta):
 		if self.position.y >= 500:
 			regen_fabric()
 	
-	if mouse_on && clickable && !Global.dragging_something:
-		if Input.is_action_just_pressed("left_mouse_click"):
+	if mouse_on && clickable:
+		if Input.is_action_just_pressed("left_mouse_click") && !Global.dragging_something:
+			Global.dragging_something = true
 			offset = get_global_mouse_position() - global_position
 			plucked = true
 		
-		if Input.is_action_pressed("left_mouse_click"):
+		if Input.is_action_pressed("left_mouse_click") and plucked:
 			global_position = get_global_mouse_position() - offset
 			clicked_on = true
 		
 		elif Input.is_action_just_released("left_mouse_click"):
+			Global.dragging_something = false
 			clicked_on = false
 	
 	if !clickable:
@@ -56,3 +58,10 @@ func regen_fabric():
 
 func _on_timer_timeout():
 	clickable = true
+
+
+func insert_into_mixer(mixer) -> void:
+	var successful_insert : bool = mixer.update_doll_color_pattern(color, pattern)
+	if successful_insert:
+		Global.dragging_something = false
+		queue_free()

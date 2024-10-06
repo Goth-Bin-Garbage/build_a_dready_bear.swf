@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2pyds7hom2cf"]
+[gd_scene load_steps=8 format=3 uid="uid://2pyds7hom2cf"]
 
 [ext_resource type="Texture2D" uid="uid://8pwpj5t4qx76" path="res://sprites/mixer.png" id="1_7bdv8"]
 [ext_resource type="Script" path="res://ui/mixer.gd" id="1_v1nhw"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayyef"]
 size = Vector2(92, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mgfm"]
+size = Vector2(70, 34)
 
 [sub_resource type="Curve" id="Curve_5lo4q"]
 min_value = -360.0
@@ -28,6 +31,12 @@ texture = ExtResource("1_7bdv8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ayyef")
+
+[node name="AreaInsert" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaInsert"]
+position = Vector2(0, -69)
+shape = SubResource("RectangleShape2D_0mgfm")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-2, -52)
@@ -52,3 +61,4 @@ scale_amount_curve = SubResource("Curve_dt7yd")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="AreaInsert" to="." method="_on_area_insert_area_entered"]

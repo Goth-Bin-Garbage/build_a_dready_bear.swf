@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8rq8ff8w1aco"]
 
 [ext_resource type="Script" path="res://stations/station_elements/fabric_balls.gd" id="1_1p1n8"]
-[ext_resource type="Texture2D" uid="uid://cxmoelru2p2w4" path="res://sprites/hi.png" id="2_yihwr"]
+[ext_resource type="Texture2D" uid="uid://baret224tlvwb" path="res://sprites/ball.png" id="2_y436n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kukia"]
 radius = 34.0588
@@ -17,9 +17,10 @@ offset_right = 20.0
 offset_bottom = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yihwr")
+scale = Vector2(0.101949, 0.101949)
+texture = ExtResource("2_y436n")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["mixer_droppable"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_kukia")

@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://peuqdai1wmub"]
+[gd_scene load_steps=8 format=3 uid="uid://peuqdai1wmub"]
 
 [ext_resource type="Script" path="res://ui/order.gd" id="1_2yje7"]
 [ext_resource type="Texture2D" uid="uid://dp3tbs85g74ix" path="res://sprites/order_note.png" id="1_mrj2b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m6q8c"]
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgl7b"]
+size = Vector2(25, 166)
 
 [sub_resource type="Animation" id="Animation_ci7bd"]
 resource_name = "order_swoop_in"
@@ -80,7 +83,17 @@ offset_right = 26.0
 text = "color"
 label_settings = SubResource("LabelSettings_m6q8c")
 
+[node name="Area2D" type="Area2D" parent="Sprite2D" groups=["order"]]
+position = Vector2(0, 158)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(-0.5, -160)
+shape = SubResource("RectangleShape2D_rgl7b")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_38onp")
 }
+
+[connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_exited"]

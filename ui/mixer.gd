@@ -21,6 +21,9 @@ extends Node2D
 @onready var head_shape : GameData.DollHeadShape
 @onready var eyes : GameData.DollEyes
 
+@onready var area : Area2D = $Area2D
+@onready var hovering_over_order : Node2D
+
 
 func _ready():
 	adjust_snap_x()
@@ -32,7 +35,16 @@ func _process(delta):
 		
 	scale = lerp(scale, scale_normal if !dragging else scale_dragging, .15)
 	
-	
+	if Global.dragging_something:
+		var areas = area.get_overlapping_areas()
+		hovering_over_order = null
+		for a : Area2D in areas:
+			if a.is_in_group("order"):
+				var order = a.get_parent().get_parent()
+				hovering_over_order = order
+				break
+		print(hovering_over_order)
+		
 	#if Input.is_action_just_released("click"):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if !dragging and mouse_over and !Global.dragging_something:
@@ -56,7 +68,7 @@ func _process(delta):
 			snap_weight
 		)
 	
-	rotation = lerp(rotation, (global_position.x - previous_position.x) * .1, .05)
+	rotation = lerp(rotation, (global_position.x - previous_position.x) * .05, .05)
 	
 	previous_position = global_position
 
@@ -76,3 +88,7 @@ func _on_area_2d_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	mouse_over = false
+
+
+func emit_puff_particles():
+	$CPUParticles2D.emitting = true

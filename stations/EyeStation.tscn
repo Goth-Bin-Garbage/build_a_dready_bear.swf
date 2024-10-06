@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://j6lysevhmgpd"]
 
-[ext_resource type="PackedScene" path="res://music.tscn" id="1_u72si"]
+[ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_u72si"]
 [ext_resource type="Texture2D" uid="uid://camy5w6j8pap8" path="res://sprites/spr_grow_eyes_placeholder.png" id="2_1llut"]
 
 [node name="EyeStation" type="Node2D"]

@@ -8,7 +8,7 @@
 [node name="Mixers" type="Node2D" parent="."]
 
 [node name="Mixer3" parent="Mixers" instance=ExtResource("1_ebuj0")]
-position = Vector2(415, 363)
+position = Vector2(411, 576)
 
 [node name="Mixer2" parent="Mixers" instance=ExtResource("1_ebuj0")]
 position = Vector2(678, 575)

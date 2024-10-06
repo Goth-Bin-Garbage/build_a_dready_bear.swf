@@ -30,16 +30,19 @@ func _process(delta):
 		
 	scale = lerp(scale, scale_normal if !dragging else scale_dragging, .15)
 	
-	if Input.is_action_just_released("click"):
-		if !dragging and mouse_over:
+	#if Input.is_action_just_released("click"):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if !dragging and mouse_over and !Global.dragging_something:
 			old_snap_x = snap_x
+			Global.dragging_something = true
 			dragging = true
-		elif dragging:
-			for other_mixer in get_parent().get_children():
-				if other_mixer != self and other_mixer.snap_x == snap_x:
-					snap_x = old_snap_x
-					break
-			dragging = false
+	elif dragging:
+		for other_mixer in get_parent().get_children():
+			if other_mixer != self and other_mixer.snap_x == snap_x:
+				snap_x = old_snap_x
+				break
+		dragging = false
+		Global.dragging_something = false
 	
 	if dragging:
 		global_position = get_viewport().get_mouse_position()

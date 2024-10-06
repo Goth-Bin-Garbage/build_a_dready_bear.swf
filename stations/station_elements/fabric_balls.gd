@@ -23,7 +23,7 @@ func _process(delta):
 		if self.position.y >= 500:
 			regen_fabric()
 	
-	if mouse_on && clickable:
+	if mouse_on && clickable && !Global.dragging_something:
 		if Input.is_action_just_pressed("left_mouse_click"):
 			offset = get_global_mouse_position() - global_position
 			plucked = true

@@ -7,6 +7,8 @@ extends Node2D
 @onready var timer : Timer = $Timer
 @onready var progress_window : Sprite2D = $ProgressWindow
 
+var body_part = preload("res://stations/station_elements/BodyPart.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	progress_window.position = $ProgressRest.position
@@ -26,6 +28,11 @@ func _process(delta):
 		elif Input.is_action_just_released("left_mouse_click"):
 			timer.stop()
 			tween.tween_property(progress_window, "global_position",$ProgressRest.position,0.2).set_ease(Tween.EASE_OUT)
+			
+			var new_body = body_part.instantiate()
+			new_body.size = size
+			self.add_child(new_body)
+			new_body.position = $BodySpawn.position
 
 func _on_area_2d_mouse_entered():
 	mouse_on = true

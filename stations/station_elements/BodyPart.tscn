@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwfpt18colo41"]
+
+[ext_resource type="Script" path="res://stations/station_elements/body_part.gd" id="1_ug2n6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3tog"]
+
+[node name="BodyPart" type="Node2D"]
+script = ExtResource("1_ug2n6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_f3tog")

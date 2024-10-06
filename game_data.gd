@@ -16,6 +16,7 @@ enum DollColor {RED, BLUE, GREEN, YELLOW}
 enum DollPattern {STRIPE, GRID, POLKA}
 enum DollHeadShape {BEAR, KITTO, FROG, BAT, MOUSE}
 enum DollEyes {EYEZALEA, BUTTONS}
+enum DollLimbs {PAW, STRIPED, FLIPPER, WINGS}
 
 var doll_colors : Dictionary = {
 	DollColor.RED : Color.RED,

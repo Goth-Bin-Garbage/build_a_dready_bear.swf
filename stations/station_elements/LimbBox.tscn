@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://2dbuhl7jbsyi"]
+
+[ext_resource type="Script" path="res://stations/station_elements/limb_box.gd" id="1_lf3ju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq62p"]
+
+[node name="LimbBox" type="Node2D"]
+script = ExtResource("1_lf3ju")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dq62p")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

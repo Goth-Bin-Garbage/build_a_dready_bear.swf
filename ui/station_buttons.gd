@@ -21,3 +21,15 @@ func _on_headshape_button_pressed():
 
 func _on_grow_eyes_button_pressed():
 	Global.main.load_station("EyeStation")
+
+
+func _on_cut_body_button_pressed():
+	Global.main.load_station("BodyStation")
+
+
+func _on_fill_limbs_button_pressed():
+	Global.main.load_station("LimbStation")
+
+
+func _on_shake_button_pressed():
+	Global.main.load_station("MixStation")

@@ -64,4 +64,4 @@ func insert_into_mixer(mixer) -> void:
 	var successful_insert : bool = mixer.update_doll_color_pattern(color, pattern)
 	if successful_insert:
 		Global.dragging_something = false
-		queue_free()
+		regen_fabric()

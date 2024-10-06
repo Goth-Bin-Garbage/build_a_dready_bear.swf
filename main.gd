@@ -10,7 +10,6 @@ extends Node2D
 @onready var ui_node := $UI
 @onready var ui_orders_node := $UI/Orders
 
-@onready var orders_received := 0
 
 func _ready():
 	load_station(Global.get_station_scene_file(GameData.Station.FABRIC))
@@ -52,17 +51,16 @@ func change_station(new_station : GameData.Station) -> void:
 	print("left" if new_station_before_current else "right")
 
 
-var order := preload("res://ui/order.tscn")
+var order_scene := preload("res://ui/order.tscn")
+var orders_received := 0
 
 func new_order() -> void:
-	orders_received += 1
 	# block creating new order if there already are 4
 	if self.orders.size() >= 4:
 		return
-	var order_instance = order.instantiate()
+	var order_instance = order_scene.instantiate()
 	order_instance.name = "order_" + str(orders_received)
 	ui_orders_node.add_child(order_instance)
 	orders.append(order_instance)
-	
 	orders_received += 1
 	

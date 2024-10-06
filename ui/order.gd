@@ -5,19 +5,25 @@ extends Node
 @onready var head_shape := Global.get_random_doll_headshape()
 @onready var eyes := Global.get_random_doll_eyes()
 
-@onready var eyes_label := $Sprite2D/EyesLabel
-@onready var pattern_label := $Sprite2D/PatternLabel
-@onready var color_label := $Sprite2D/ColorLabel
-@onready var head_label := $Sprite2D/HeadLabel
+@onready var sprite_normal := $SpriteNode/SpriteNormal
+@onready var sprite_crumpled := $SpriteNode/SpriteCrumpled
+
+@onready var eyes_label := $SpriteNode/SpriteNormal/EyesLabel
+@onready var pattern_label := $SpriteNode/SpriteNormal/PatternLabel
+@onready var color_label := $SpriteNode/SpriteNormal/ColorLabel
+@onready var head_label := $SpriteNode/SpriteNormal/HeadLabel
 
 @onready var anim_player := $AnimationPlayer
 
 @onready var mixer_over_me : Node2D
 
-@onready var area := $Sprite2D/Area2D
+@onready var area := $SpriteNode/Area2D
 
 @onready var scale_normal := Vector2(1, 1)
 @onready var scale_hovering := Vector2(1.25, 1.25)
+
+var mouse_inside := false
+var index_in_main_order_array := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,12 +37,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.global_position.x = lerp(self.global_position.x, calculate_x(), .2)
+	index_in_main_order_array = get_index_in_array()
 	
-	if !mixer_over_me:
-		return
+	self.global_position.x = lerp(
+		self.global_position.x,
+		calculate_x(),
+		.15
+	)
+	
+	var i_am_the_chosen_one : bool = (mixer_over_me && mixer_over_me.hovering_over_order == self)
+	
+	if i_am_the_chosen_one || mouse_inside:
+		sprite_normal.show()
+		sprite_crumpled.hide()
+	else:
+		sprite_normal.hide()
+		sprite_crumpled.show()
 		
-	var i_am_the_chosen_one : bool = (mixer_over_me.hovering_over_order == self)
 		
 	self.scale = lerp(self.scale, scale_hovering if i_am_the_chosen_one else scale_normal, .2)
 	
@@ -62,7 +79,7 @@ func get_index_in_array() -> int:
 
 # based on order of Global.main.orders
 func calculate_x() -> float:
-	var i := get_index_in_array()
+	var i := index_in_main_order_array
 	
 	# gap between each order
 	var _w := 115
@@ -81,3 +98,11 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_area_exited(area):
 	if area.is_in_group('mixer'):
 		mixer_over_me = area.get_parent()
+
+
+func _on_area_2d_mouse_entered():
+	mouse_inside = true
+	
+
+func _on_area_2d_mouse_exited():
+	mouse_inside = false

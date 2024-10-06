@@ -1,15 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddpwu6b6abc83"]
+[gd_scene load_steps=6 format=3 uid="uid://ddpwu6b6abc83"]
 
 [ext_resource type="Script" path="res://stations/fabric_station.gd" id="1_m74u4"]
-[ext_resource type="Texture2D" uid="uid://cfi5cf3pay6lg" path="res://sprites/emoji.png" id="2_56fkc"]
 [ext_resource type="PackedScene" uid="uid://c8rq8ff8w1aco" path="res://stations/station_elements/FabricBalls.tscn" id="2_e2f0m"]
+[ext_resource type="Texture2D" uid="uid://c6s8r0jqaup1d" path="res://sprites/picker.png" id="2_l17j0"]
+
+[sub_resource type="Gradient" id="Gradient_3thn6"]
+colors = PackedColorArray(0, 0, 0, 1, 0.362559, 0, 0.0567371, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8mhx5"]
+gradient = SubResource("Gradient_3thn6")
+fill_from = Vector2(0.0412844, 0)
+fill_to = Vector2(0.981651, 1)
 
 [node name="FabricStation" type="Node2D"]
 script = ExtResource("1_m74u4")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 800.0
+offset_bottom = 603.0
+texture = SubResource("GradientTexture2D_8mhx5")
+
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(392, 219)
-texture = ExtResource("2_56fkc")
+position = Vector2(390, 281)
+scale = Vector2(0.113356, 0.113356)
+texture = ExtResource("2_l17j0")
 
 [node name="FabricBalls" type="Node2D" parent="."]
 
@@ -33,21 +47,22 @@ fabric_type = "Pattern"
 pattern = 2
 
 [node name="PositionMarkers" type="Node2D" parent="."]
+position = Vector2(0, -52)
 
 [node name="Marker2D" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(262, 77)
+position = Vector2(242, 177)
 
 [node name="Marker2D2" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(156, 185)
+position = Vector2(196, 316)
 
 [node name="Marker2D3" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(253, 306)
+position = Vector2(244, 450)
 
 [node name="Marker2D4" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(542, 71)
+position = Vector2(554, 164)
 
 [node name="Marker2D5" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(650, 197)
+position = Vector2(587, 306)
 
 [node name="Marker2D6" type="Marker2D" parent="PositionMarkers"]
-position = Vector2(539, 303)
+position = Vector2(542, 430)

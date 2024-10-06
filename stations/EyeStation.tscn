@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://j6lysevhmgpd"]
+[gd_scene load_steps=5 format=3 uid="uid://j6lysevhmgpd"]
 
 [ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_u72si"]
 [ext_resource type="Texture2D" uid="uid://camy5w6j8pap8" path="res://sprites/spr_grow_eyes_placeholder.png" id="2_1llut"]
 
+[sub_resource type="Gradient" id="Gradient_tfn0n"]
+offsets = PackedFloat32Array(0.409091, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.141176, 0.498039, 0.294118, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dmpsi"]
+gradient = SubResource("Gradient_tfn0n")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.793578, 0.178899)
+
 [node name="EyeStation" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 802.0
+offset_bottom = 600.0
+texture = SubResource("GradientTexture2D_dmpsi")
 
 [node name="Music" parent="." instance=ExtResource("1_u72si")]
 

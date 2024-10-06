@@ -38,12 +38,16 @@ func _process(delta):
 	if Global.dragging_something:
 		var areas = area.get_overlapping_areas()
 		hovering_over_order = null
+		var closest_order = null
+		var closest_order_distance = INF
 		for a : Area2D in areas:
 			if a.is_in_group("order"):
 				var order = a.get_parent().get_parent()
-				hovering_over_order = order
-				break
-		print(hovering_over_order)
+				var dist = global_position.distance_to(order.global_position)
+				if dist <= closest_order_distance:
+					closest_order_distance = dist
+					closest_order = order
+		hovering_over_order = closest_order
 		
 	#if Input.is_action_just_released("click"):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):

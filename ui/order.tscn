@@ -1,35 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://peuqdai1wmub"]
+[gd_scene load_steps=9 format=3 uid="uid://peuqdai1wmub"]
 
 [ext_resource type="Script" path="res://ui/order.gd" id="1_2yje7"]
 [ext_resource type="Texture2D" uid="uid://dp3tbs85g74ix" path="res://sprites/order_note.png" id="1_mrj2b"]
+[ext_resource type="Texture2D" uid="uid://dajc232wovuxw" path="res://sprites/order_note_crumpled.png" id="3_o5g31"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m6q8c"]
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgl7b"]
-size = Vector2(25, 166)
-
-[sub_resource type="Animation" id="Animation_ci7bd"]
-resource_name = "order_swoop_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.277393, 1),
-"update": 0,
-"values": [Vector2(0, -158), Vector2(0, 92)]
-}
+size = Vector2(107.5, 67)
 
 [sub_resource type="Animation" id="Animation_2cliq"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("SpriteNode:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -37,6 +23,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -158)]
+}
+
+[sub_resource type="Animation" id="Animation_ci7bd"]
+resource_name = "order_swoop_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.277393, 1),
+"update": 0,
+"values": [Vector2(0, -158), Vector2(0, 92)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38onp"]
@@ -48,46 +49,55 @@ _data = {
 [node name="Order" type="Node2D"]
 script = ExtResource("1_2yje7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SpriteNode" type="Node2D" parent="."]
 position = Vector2(0, -158)
+
+[node name="SpriteNormal" type="Sprite2D" parent="SpriteNode"]
+visible = false
+position = Vector2(-3, 4)
 texture = ExtResource("1_mrj2b")
 
-[node name="EyesLabel" type="Label" parent="Sprite2D"]
-offset_left = -31.0
-offset_top = 39.0
-offset_right = 20.0
-offset_bottom = 62.0
+[node name="EyesLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+offset_left = -28.0
+offset_top = 35.0
+offset_right = 23.0
+offset_bottom = 58.0
 text = "eyes"
 label_settings = SubResource("LabelSettings_m6q8c")
 
-[node name="PatternLabel" type="Label" parent="Sprite2D"]
-offset_left = -33.0
-offset_top = 8.0
-offset_right = 26.0
-offset_bottom = 31.0
+[node name="PatternLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+offset_left = -30.0
+offset_top = 4.0
+offset_right = 29.0
+offset_bottom = 27.0
 text = "pattern"
 label_settings = SubResource("LabelSettings_m6q8c")
 
-[node name="HeadLabel" type="Label" parent="Sprite2D"]
-offset_left = -30.0
-offset_top = -55.0
-offset_right = 29.0
-offset_bottom = -32.0
+[node name="HeadLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+offset_left = -27.0
+offset_top = -59.0
+offset_right = 32.0
+offset_bottom = -36.0
 text = "head"
 label_settings = SubResource("LabelSettings_m6q8c")
 
-[node name="ColorLabel" type="Label" parent="Sprite2D"]
-offset_left = -33.0
-offset_top = -23.0
-offset_right = 26.0
+[node name="ColorLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+offset_left = -30.0
+offset_top = -27.0
+offset_right = 29.0
+offset_bottom = -4.0
 text = "color"
 label_settings = SubResource("LabelSettings_m6q8c")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D" groups=["order"]]
+[node name="SpriteCrumpled" type="Sprite2D" parent="SpriteNode"]
+position = Vector2(-16, -64)
+texture = ExtResource("3_o5g31")
+
+[node name="Area2D" type="Area2D" parent="SpriteNode" groups=["order"]]
 position = Vector2(0, 158)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-position = Vector2(-0.5, -160)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteNode/Area2D"]
+position = Vector2(-3.75, -222.5)
 shape = SubResource("RectangleShape2D_rgl7b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -95,5 +105,7 @@ libraries = {
 "": SubResource("AnimationLibrary_38onp")
 }
 
-[connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="SpriteNode/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="SpriteNode/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="SpriteNode/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="SpriteNode/Area2D" to="." method="_on_area_2d_mouse_exited"]

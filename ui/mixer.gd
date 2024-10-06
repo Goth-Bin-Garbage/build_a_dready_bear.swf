@@ -8,6 +8,8 @@ extends Node2D
 @onready var mouse_over : bool = false
 @onready var dragging : bool = false
 
+@onready var previous_position : Vector2 = global_position
+
 @onready var snap_x : int
 @onready var old_snap_x : int
 
@@ -29,6 +31,7 @@ func _process(delta):
 		adjust_snap_x()
 		
 	scale = lerp(scale, scale_normal if !dragging else scale_dragging, .15)
+	
 	
 	#if Input.is_action_just_released("click"):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -52,6 +55,10 @@ func _process(delta):
 			Vector2(snap_x, Global.window_size.y - offset_from_bottom),
 			snap_weight
 		)
+	
+	rotation = lerp(rotation, (global_position.x - previous_position.x) * .1, .05)
+	
+	previous_position = global_position
 
 
 func adjust_snap_x():

@@ -12,24 +12,24 @@ func _process(delta):
 
 
 func _on_pluck_balls_button_pressed():
-	Global.main.load_station("FabricStation")
+	Global.main.change_station(GameData.Station.FABRIC)
 
 
 func _on_headshape_button_pressed():
-	Global.main.load_station("HeadStation")
+	Global.main.change_station(GameData.Station.HEAD)
 
 
 func _on_grow_eyes_button_pressed():
-	Global.main.load_station("EyeStation")
+	Global.main.change_station(GameData.Station.EYES)
 
 
 func _on_cut_body_button_pressed():
-	Global.main.load_station("BodyStation")
+	Global.main.change_station(GameData.Station.BODY)
 
 
 func _on_fill_limbs_button_pressed():
-	Global.main.load_station("LimbStation")
+	Global.main.change_station(GameData.Station.LIMBS)
 
 
 func _on_shake_button_pressed():
-	Global.main.load_station("MixStation")
+	Global.main.change_station(GameData.Station.MIX)

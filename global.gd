@@ -18,6 +18,9 @@ func get_random_doll_headshape() -> GameData.DollHeadShape:
 
 func get_random_doll_eyes() -> GameData.DollEyes:
 	return GameData.DollEyes.values().pick_random()
+	
+func get_station_scene_file(station : GameData.Station) -> String:
+	return GameData.station_scene_ids[station]
 
 # window management stuff (as done for LD55)
 @onready var window_size: Vector2 = get_window().size

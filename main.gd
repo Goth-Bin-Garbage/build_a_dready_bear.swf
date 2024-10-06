@@ -7,7 +7,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_station("FabricStation")
+	load_station(Global.get_station_scene_file(GameData.Station.FABRIC))
 	pass
 
 
@@ -25,7 +25,22 @@ func load_station(station_id : String) -> void:
 	if station_id == loaded_station_id:
 		return
 	unload_station()
-	var new_station = load("res://stations/" + station_id + ".tscn")
+	var new_station = load(station_id)
 	station_instance = new_station.instantiate()
 	station_node.add_child(station_instance)
 	loaded_station_id = station_id
+
+
+func change_station(new_station : GameData.Station) -> void:
+	# find out if new station is to the left or right of current station
+	var new_station_before_current = false
+	var found_current_station = false
+	for station in GameData.station_scene_ids.keys():
+		if GameData.station_scene_ids[station] == loaded_station_id:
+			found_current_station = true
+		elif station == new_station:
+			if !found_current_station:
+				new_station_before_current = true
+			load_station(GameData.station_scene_ids[station])
+			break
+	print("left" if new_station_before_current else "right")

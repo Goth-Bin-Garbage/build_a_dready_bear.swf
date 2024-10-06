@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://peuqdai1wmub"]
+[gd_scene load_steps=10 format=3 uid="uid://peuqdai1wmub"]
 
 [ext_resource type="Script" path="res://ui/order.gd" id="1_2yje7"]
 [ext_resource type="Texture2D" uid="uid://dp3tbs85g74ix" path="res://sprites/order_note.png" id="1_mrj2b"]
@@ -40,9 +40,25 @@ tracks/0/keys = {
 "values": [Vector2(0, -158), Vector2(0, 92)]
 }
 
+[sub_resource type="Animation" id="Animation_ljf8n"]
+resource_name = "order_remove"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3.605, 1),
+"update": 0,
+"values": [Vector2(0, 92), Vector2(1, -220)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38onp"]
 _data = {
 "RESET": SubResource("Animation_2cliq"),
+"order_remove": SubResource("Animation_ljf8n"),
 "order_swoop_in": SubResource("Animation_ci7bd")
 }
 
@@ -93,6 +109,15 @@ label_settings = SubResource("LabelSettings_m6q8c")
 position = Vector2(-16, -64)
 texture = ExtResource("3_o5g31")
 
+[node name="ProgressBar" type="ProgressBar" parent="SpriteNode/SpriteCrumpled"]
+offset_left = -41.0
+offset_top = 1.0
+offset_right = 51.0
+offset_bottom = 13.0
+rotation = -0.0638863
+value = 100.0
+show_percentage = false
+
 [node name="Area2D" type="Area2D" parent="SpriteNode" groups=["order"]]
 position = Vector2(0, 158)
 
@@ -105,7 +130,13 @@ libraries = {
 "": SubResource("AnimationLibrary_38onp")
 }
 
+[node name="OrderLifeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="area_entered" from="SpriteNode/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="SpriteNode/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="mouse_entered" from="SpriteNode/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="SpriteNode/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="OrderLifeTimer" to="." method="_on_order_life_timer_timeout"]

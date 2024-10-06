@@ -2,7 +2,13 @@ extends Node
 
 @onready var main : Node2D = get_tree().get_root().get_node("Main")
 
-@onready var dragging_something : bool = false
+# day 0 = tutorial, day = 1 true game
+var day : int = 0
+
+# prevent triggering dragging other objects by setting this to true
+# while dragging something else (e.g. a mixer, a fabric ball...)
+var dragging_something : bool = false
+
 # game stuff
 func get_doll_color(doll_color : GameData.DollColor) -> Color:
 	return GameData.doll_colors[doll_color]

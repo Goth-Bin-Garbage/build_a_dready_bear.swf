@@ -10,6 +10,8 @@ extends Node2D
 @onready var ui_node := $UI
 @onready var ui_orders_node := $UI/Orders
 
+var orders_received := 0
+
 
 func _ready():
 	load_station(Global.get_station_scene_file(GameData.Station.FABRIC))
@@ -52,15 +54,20 @@ func change_station(new_station : GameData.Station) -> void:
 
 
 var order_scene := preload("res://ui/order.tscn")
-var orders_received := 0
 
 func new_order() -> void:
-	# block creating new order if there already are 4
-	if self.orders.size() >= 4:
+	# block creating new order if there are too many
+	if self.orders.size() >= get_maximum_number_of_orders():
 		return
 	var order_instance = order_scene.instantiate()
 	order_instance.name = "order_" + str(orders_received)
 	ui_orders_node.add_child(order_instance)
 	orders.append(order_instance)
 	orders_received += 1
-	
+
+
+func get_maximum_number_of_orders() -> int:
+	# only 2 maximum orders for the tutorial
+	if Global.day == 0:
+		return 2
+	return 4

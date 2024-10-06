@@ -1,5 +1,14 @@
 extends Node
 
+# Game config stuff
+# every <new_order_attempt_interval> seconds, the game has a
+#  <new_order_attempt_chance> of giving the player a new order
+var new_order_attempt_interval := 5.0 # seconds
+var new_order_attempt_chance := 0.25
+
+var order_life_time := 60.0 * 2 # 2 minutes
+
+# References to stuff
 enum Station {FABRIC, HEAD, EYES, BODY, LIMBS, MIX}
 var stations_dir = "res://stations/"
 var station_scene_ids : Dictionary = {

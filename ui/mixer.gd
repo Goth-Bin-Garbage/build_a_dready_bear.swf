@@ -26,6 +26,7 @@ extends Node2D
 
 
 func _ready():
+	emit_puff_particles()
 	adjust_snap_x()
 
 

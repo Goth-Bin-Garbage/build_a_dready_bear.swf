@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bly5u2g2hub8c"]
+[gd_scene load_steps=4 format=3 uid="uid://bly5u2g2hub8c"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_rub1s"]
 [ext_resource type="PackedScene" uid="uid://wvb1kyxrajvi" path="res://ui/ui.tscn" id="2_cqt5f"]
+[ext_resource type="PackedScene" uid="uid://b5vka5tcsm2t" path="res://logic.tscn" id="3_06txs"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rub1s")
@@ -9,3 +10,5 @@ script = ExtResource("1_rub1s")
 [node name="Station" type="Node2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("2_cqt5f")]
+
+[node name="Logic" parent="." instance=ExtResource("3_06txs")]

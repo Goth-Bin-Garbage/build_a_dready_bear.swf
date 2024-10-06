@@ -25,12 +25,25 @@ extends Node
 var mouse_inside := false
 var index_in_main_order_array := 0
 
+@onready var progress_bar : ProgressBar = $SpriteNode/SpriteCrumpled/ProgressBar
+@onready var life_timer : Timer = $OrderLifeTimer
+
+var force_show := false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	progress_bar.get_theme_stylebox("fill").bg_color = Color(0.4, 0.1, 0.0)
+	
 	pattern_label.text = "pattern: " + str(pattern)
 	color_label.text = "color: " + str(color)
 	eyes_label.text = "eyes: " + str(eyes)
 	head_label.text = "head: " + str(head_shape)
+	
+	life_timer.wait_time = GameData.order_life_time
+	progress_bar.max_value = GameData.order_life_time
+	
+	life_timer.start()
 	
 	anim_player.play("order_swoop_in")
 
@@ -45,9 +58,11 @@ func _process(delta):
 		.15
 	)
 	
+	progress_bar.value = life_timer.time_left
+	
 	var i_am_the_chosen_one : bool = (mixer_over_me && mixer_over_me.hovering_over_order == self)
 	
-	if i_am_the_chosen_one || mouse_inside:
+	if i_am_the_chosen_one || mouse_inside || force_show:
 		sprite_normal.show()
 		sprite_crumpled.hide()
 	else:
@@ -58,14 +73,17 @@ func _process(delta):
 	self.scale = lerp(self.scale, scale_hovering if i_am_the_chosen_one else scale_normal, .2)
 	
 	if !Global.dragging_something and i_am_the_chosen_one:
-		var index := get_index_in_array()
-		Global.main.orders[index].queue_free()
-		Global.main.orders.remove_at(index)
+		animate_then_delete()
 		
 		var _y = Global.window_size.y + 100
 		mixer_over_me.global_position = Vector2(mixer_over_me.old_snap_x, _y)
 		mixer_over_me.emit_puff_particles()
 
+
+func animate_then_delete() -> void:
+	var index := get_index_in_array()
+	Global.main.orders.remove_at(index)
+	anim_player.play("order_remove")
 
 
 func get_index_in_array() -> int:
@@ -106,3 +124,13 @@ func _on_area_2d_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	mouse_inside = false
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "order_remove":
+		queue_free()
+
+
+func _on_order_life_timer_timeout():
+	force_show = true
+	animate_then_delete()

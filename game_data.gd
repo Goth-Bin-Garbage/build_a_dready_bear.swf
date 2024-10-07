@@ -23,9 +23,9 @@ var station_scene_ids : Dictionary = {
 	Station.MIX : stations_dir + "MixStation.tscn"
 }
 
-enum DollColor {NONE, RED, BLUE, GREEN, YELLOW}
+enum DollColor {NONE, RED, BLUE, GREEN}
 enum DollPattern {NONE, STRIPE, GRID, POLKA}
-enum DollHeadShape {NONE, BEAR, KITTO, FROG, BAT, MOUSE}
+enum DollHeadShape {NONE, BEAR, KITTO, FROG}
 enum DollEyes {NONE, EYEZALEA, BUTTONS}
 enum DollLimbs {NONE, PAW, STRIPED, FLIPPER, WINGS}
 

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cqjox7e1o3hqt" path="res://sprites/desk.png" id="1_h7ri4"]
 [ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_u72si"]
 [ext_resource type="Texture2D" uid="uid://camy5w6j8pap8" path="res://sprites/spr_grow_eyes_placeholder.png" id="2_1llut"]
-[ext_resource type="PackedScene" uid="uid://ce7ibreq8f4fh" path="res://stations/station_elements/EyePlantPlot.tscn" id="3_f720y"]
+[ext_resource type="PackedScene" path="res://stations/station_elements/EyePlantPlot.tscn" id="3_f720y"]
 [ext_resource type="PackedScene" uid="uid://cubmx3r8jvxsr" path="res://stations/station_elements/EyeSeedPacket.tscn" id="4_1yx2c"]
 [ext_resource type="Texture2D" uid="uid://cofihw3o886cm" path="res://sprites/pot2.png" id="4_7hf2q"]
 [ext_resource type="Texture2D" uid="uid://ch0gkdsp2ekp1" path="res://sprites/dirt.png" id="5_67dp1"]

@@ -11,6 +11,9 @@ var parent_instance : Node2D
 @onready var clicked_on : bool = false
 var offset : Vector2
 
+var acceleration_y := 0.0
+var velocity_y := 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -20,11 +23,17 @@ func _process(delta):
 	if clickable:
 		$Sprite2D.texture = GameData.doll_eye_sprites[eye_type]
 		$Sprite2D.scale = Vector2(0.1, 0.1)
+		z_index = 999
 	else:
 		return
-	
+		
+	if self.position.y >= 600:
+		queue_free()
 	if plucked && !clicked_on:
-		self.position.y += 0.1
+		acceleration_y = 0.03
+	velocity_y += acceleration_y
+	
+	self.position.y += velocity_y
 	
 	if Input.is_action_just_pressed("left_mouse_click") and mouse_on:
 		offset = get_global_mouse_position() - global_position

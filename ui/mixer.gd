@@ -246,8 +246,9 @@ func update_content_preview():
 		has_anything = true
 		$MixerContents/SpriteEye.show()
 		$MixerContents/Label.show()
-		$MixerContents/Label.text = "x" + str(eyes_count)
 		$MixerContents/SpriteEye.texture = GameData.doll_eye_sprites[eyes]
+		if eyes_count > 1:
+			$MixerContents/Label.text = "x" + str(eyes_count)
 	
 	if material_stuffing_count <= 0:
 		$MixerContents/SpriteStuffing.hide()

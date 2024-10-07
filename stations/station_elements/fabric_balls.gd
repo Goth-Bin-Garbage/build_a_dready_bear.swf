@@ -43,6 +43,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("left_mouse_click") && !Global.dragging_something:
 			Global.dragging_something = true
 			offset = get_global_mouse_position() - global_position
+			$ClickSound.play()
 			plucked = true
 		
 		if Input.is_action_pressed("left_mouse_click") and plucked:
@@ -58,6 +59,7 @@ func _process(delta):
 			var time_spent = 8 - $Timer.time_left
 			var time_fraction = time_spent / 8.0
 			self.scale = Vector2(time_fraction, time_fraction)
+			self.rotation += .01
 
 func _on_area_2d_mouse_entered():
 	mouse_on = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://tei5rxtfxt5g"]
+[gd_scene load_steps=10 format=3 uid="uid://tei5rxtfxt5g"]
 
 [ext_resource type="Script" path="res://stations/head_station.gd" id="1_75abx"]
 [ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_phd72"]
@@ -8,8 +8,21 @@
 [ext_resource type="Texture2D" uid="uid://bu2sj2orkqff5" path="res://sprites/machine1.png" id="5_baueu"]
 [ext_resource type="Texture2D" uid="uid://s6np2sykew5q" path="res://sprites/machine2.png" id="6_q4psc"]
 
+[sub_resource type="Gradient" id="Gradient_3thn6"]
+colors = PackedColorArray(0, 0, 0, 1, 0.155567, 0.135679, 0.379637, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_23pvx"]
+gradient = SubResource("Gradient_3thn6")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.59633, 0.233945)
+
 [node name="HeadStation" type="Node2D"]
 script = ExtResource("1_75abx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 800.0
+offset_bottom = 603.0
+texture = SubResource("GradientTexture2D_23pvx")
 
 [node name="Music" parent="." instance=ExtResource("1_phd72")]
 stream = ExtResource("3_onq18")

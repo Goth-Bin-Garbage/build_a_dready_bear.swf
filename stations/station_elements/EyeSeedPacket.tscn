@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cubmx3r8jvxsr"]
+
+[ext_resource type="Script" path="res://stations/station_elements/eye_seed_packet.gd" id="1_fyiat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3f550"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ttfm8"]
+
+[node name="EyeSeedPacket" type="Node2D"]
+script = ExtResource("1_fyiat")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3f550")
+
+[node name="DropCollision" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropCollision"]
+shape = SubResource("CircleShape2D_ttfm8")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="DropCollision" to="." method="_on_drop_collision_area_entered"]

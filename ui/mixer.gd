@@ -211,6 +211,8 @@ func reset_mix():
 	head_shape = GameData.DollHeadShape.NONE
 	eyes = GameData.DollEyes.NONE
 	eyes_count = 0
+	material_skin_count = 0
+	material_stuffing_count = 0
 
 
 func update_content_preview():

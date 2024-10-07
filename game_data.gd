@@ -3,13 +3,13 @@ extends Node
 # Game config stuff
 # every <new_order_attempt_interval> seconds, the game has a
 #  <new_order_attempt_chance> of giving the player a new order
-var new_order_attempt_interval := 5.0 # seconds
-var new_order_attempt_chance := 0.25
+var new_order_attempt_interval := 6.0 # seconds
+var new_order_attempt_chance := 0.3
 
 var order_life_time := 60.0 * 2 # 2 minutes
 
-var number_orders_first_day := 3
-var number_orders_second_day := 6
+var number_orders_first_day := 5
+var number_orders_second_day := 10
 
 var possible_eye_counts := [1,2,3]
 var possible_material_counts := [1,2]
@@ -60,5 +60,3 @@ var doll_material_sprites : Dictionary = {
 	DollMaterials.STUFFING : load("res://sprites/material_stuffing.png"),
 	DollMaterials.SKIN : load("res://sprites/material_skin.png")
 }
-
-# similar for, e.g., pattern, headshape... maybe return sprites?

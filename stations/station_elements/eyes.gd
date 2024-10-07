@@ -14,6 +14,8 @@ var offset : Vector2
 var acceleration_y := 0.0
 var velocity_y := 0.0
 
+var dragging := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -35,18 +37,20 @@ func _process(delta):
 	
 	self.position.y += velocity_y
 	
-	if Input.is_action_just_pressed("left_mouse_click") and mouse_on:
+	if Input.is_action_just_pressed("left_mouse_click") and mouse_on and !Global.dragging_something:
 		offset = get_global_mouse_position() - global_position
 		Global.dragging_something = true
+		dragging = true
 		plucked = true
 		
-	if Input.is_action_pressed("left_mouse_click") and mouse_on:
+	if dragging:
 		global_position = get_global_mouse_position() - offset
 		clicked_on = true
 	
 	if Input.is_action_just_released("left_mouse_click"):
 		Global.dragging_something = false
 		clicked_on = false
+		dragging = false
 
 
 func _on_area_2d_mouse_entered():
@@ -59,7 +63,8 @@ func _on_area_2d_mouse_exited():
 
 func insert_into_mixer(mixer) -> void:
 	var successful_insert : bool
-	successful_insert = mixer.update_doll_eyes(eye_type) || mixer.update_doll_eyes_count(eye_type)
-	if successful_insert:
+	successful_insert = mixer.update_doll_eyes(eye_type)
+	var successful_insert_2 : bool = mixer.update_doll_eyes_count(eye_type)
+	if successful_insert || successful_insert_2:
 		parent_instance.queue_free()
 		queue_free()

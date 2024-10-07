@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://j6lysevhmgpd"]
+[gd_scene load_steps=6 format=3 uid="uid://j6lysevhmgpd"]
 
 [ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_u72si"]
 [ext_resource type="Texture2D" uid="uid://camy5w6j8pap8" path="res://sprites/spr_grow_eyes_placeholder.png" id="2_1llut"]
+[ext_resource type="PackedScene" uid="uid://ce7ibreq8f4fh" path="res://stations/station_elements/EyePlantPlot.tscn" id="3_f720y"]
 
 [sub_resource type="Gradient" id="Gradient_tfn0n"]
 offsets = PackedFloat32Array(0.409091, 1)
@@ -27,28 +28,28 @@ texture = ExtResource("2_1llut")
 
 [node name="SeedSpots" type="Node2D" parent="."]
 
-[node name="Marker2D" type="Marker2D" parent="SeedSpots"]
-position = Vector2(203, 326)
+[node name="A1" parent="SeedSpots" instance=ExtResource("3_f720y")]
+position = Vector2(202, 322)
 
-[node name="Marker2D2" type="Marker2D" parent="SeedSpots"]
-position = Vector2(300, 326)
+[node name="A2" parent="SeedSpots" instance=ExtResource("3_f720y")]
+position = Vector2(300, 320)
 
-[node name="Marker2D3" type="Marker2D" parent="SeedSpots"]
-position = Vector2(380, 330)
+[node name="A3" parent="SeedSpots" instance=ExtResource("3_f720y")]
+position = Vector2(380, 325)
 
-[node name="Marker2D4" type="Marker2D" parent="SeedSpots"]
-position = Vector2(450, 326)
+[node name="A4" parent="SeedSpots" instance=ExtResource("3_f720y")]
+position = Vector2(451, 323)
 
-[node name="Marker2D5" type="Marker2D" parent="SeedSpots"]
-position = Vector2(179, 380)
+[node name="B1" parent="SeedSpots" instance=ExtResource("3_f720y")]
+position = Vector2(182, 377)
 
-[node name="Marker2D6" type="Marker2D" parent="SeedSpots"]
-position = Vector2(282, 376)
+[node name="B2" parent="SeedSpots" instance=ExtResource("3_f720y")]
+position = Vector2(284, 378)
 
-[node name="Marker2D7" type="Marker2D" parent="SeedSpots"]
-position = Vector2(358, 376)
+[node name="B3" parent="SeedSpots" instance=ExtResource("3_f720y")]
+position = Vector2(361, 375)
 
-[node name="Marker2D8" type="Marker2D" parent="SeedSpots"]
-position = Vector2(440, 376)
+[node name="B4" parent="SeedSpots" instance=ExtResource("3_f720y")]
+position = Vector2(438, 375)
 
 [node name="Plants" type="Node2D" parent="."]

@@ -18,7 +18,8 @@ var orders_handled := 0
 
 
 func _ready():
-	start_day()
+	# start_day()
+	pass
 
 
 func _process(delta):
@@ -57,8 +58,42 @@ func change_station(new_station : GameData.Station) -> void:
 	print("left" if new_station_before_current else "right")
 
 
-var order_scene := preload("res://ui/order.tscn")
+func start_day() -> void:
+	orders_todo_today = GameData.number_orders_first_day
+	if Global.day == 1:
+		orders_todo_today = GameData.number_orders_second_day
+	day_score = 0
+	orders_received = 0
+	orders_handled = 0
+	load_station(Global.get_station_scene_file(GameData.Station.FABRIC))
+	station_instance.get_node("Music").play()
+	$DayScreen.hide()
+	$UI.show()
+	$Station.show()
+	$UI/StationButtons.show()
+	$Logic/OrderTimer.start()
+	
+	# if tutorial day, start with an order
+	if Global.day == 0:
+		new_order()
 
+
+func end_day() -> void:
+	Global.day += 1
+	station_instance.get_node("Music").stop()
+	$FinishSound.play()
+	$Logic/OrderTimer.stop()
+	$UI/StationButtons.hide()
+	$Logic/DayEndTimer.start()
+
+
+func return_to_day_screen() -> void:
+	$UI.hide()
+	$Station.hide()
+	$DayScreen.show()
+
+
+var order_scene := preload("res://ui/order.tscn")
 func new_order() -> void:
 	# block creating new order if there are too many
 	if self.orders.size() >= get_maximum_number_of_orders():
@@ -70,27 +105,6 @@ func new_order() -> void:
 	ui_orders_node.add_child(order_instance)
 	orders.append(order_instance)
 	orders_received += 1
-
-func start_day() -> void:
-	orders_todo_today = GameData.number_orders_first_day
-	if Global.day == 1:
-		orders_todo_today = GameData.number_orders_second_day
-	day_score = 0
-	orders_received = 0
-	orders_handled = 0
-	load_station(Global.get_station_scene_file(GameData.Station.FABRIC))
-	$Logic/OrderTimer.start()
-	
-	# if tutorial day, start with an order
-	if Global.day == 0:
-		new_order()
-
-
-func end_day() -> void:
-	station_instance.get_node("Music").stop()
-	$FinishSound.play()
-	$Logic/OrderTimer.stop()
-
 
 func order_completed() -> void:
 	orders_handled += 1

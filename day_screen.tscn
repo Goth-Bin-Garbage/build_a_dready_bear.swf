@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://re4dn30y8pjc"]
+
+[ext_resource type="Script" path="res://day_screen.gd" id="1_ir3j4"]
+[ext_resource type="Texture2D" uid="uid://d3jfsjn3j7spf" path="res://sprites/title_screen.png" id="1_qpn8g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cia1q"]
+font_size = 114
+shadow_size = 11
+shadow_color = Color(0.352572, 4.42201e-07, 1.44392e-07, 1)
+shadow_offset = Vector2(5, 1)
+
+[node name="DayScreen" type="Node2D"]
+script = ExtResource("1_ir3j4")
+
+[node name="TitleScreen" type="Sprite2D" parent="."]
+position = Vector2(400, 300)
+texture = ExtResource("1_qpn8g")
+
+[node name="DayNumberLabel" type="Label" parent="."]
+offset_left = 33.0
+offset_top = 47.0
+offset_right = 381.0
+offset_bottom = 254.0
+text = "DAY 0
+"
+label_settings = SubResource("LabelSettings_cia1q")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 574.0
+offset_top = 408.0
+offset_right = 721.0
+offset_bottom = 480.0
+text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

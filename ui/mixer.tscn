@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://2pyds7hom2cf"]
+[gd_scene load_steps=9 format=3 uid="uid://2pyds7hom2cf"]
 
 [ext_resource type="Texture2D" uid="uid://8pwpj5t4qx76" path="res://sprites/mixer.png" id="1_7bdv8"]
 [ext_resource type="Script" path="res://ui/mixer.gd" id="1_v1nhw"]
 [ext_resource type="Texture2D" uid="uid://d30w5y18msjvt" path="res://sprites/puff.png" id="3_ycsa0"]
+[ext_resource type="Texture2D" uid="uid://cgbc1eho2xvwx" path="res://sprites/lightpuff.png" id="4_c1gpv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayyef"]
 size = Vector2(92, 180)
@@ -38,7 +39,7 @@ shape = SubResource("RectangleShape2D_ayyef")
 position = Vector2(0, -69)
 shape = SubResource("RectangleShape2D_0mgfm")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="ParticlesDarkPuff" type="CPUParticles2D" parent="."]
 position = Vector2(-2, -52)
 emitting = false
 amount = 6
@@ -48,6 +49,27 @@ explosiveness = 0.02
 randomness = 0.29
 lifetime_randomness = 0.11
 texture = ExtResource("3_ycsa0")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.51
+initial_velocity_max = 232.33
+angular_velocity_min = 7.27
+angular_velocity_max = 7.27
+angular_velocity_curve = SubResource("Curve_5lo4q")
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_dt7yd")
+
+[node name="ParticlesLightPuff" type="CPUParticles2D" parent="."]
+position = Vector2(-2, -52)
+emitting = false
+amount = 3
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.02
+randomness = 0.29
+lifetime_randomness = 0.11
+texture = ExtResource("4_c1gpv")
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.51

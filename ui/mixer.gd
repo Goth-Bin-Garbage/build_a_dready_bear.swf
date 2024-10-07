@@ -101,6 +101,7 @@ func update_doll_color_pattern(c : GameData.DollColor, p : GameData.DollPattern)
 	if color == GameData.DollColor.NONE && pattern == GameData.DollPattern.NONE:
 		color = c
 		pattern = p
+		emit_light_puff_particles()
 		return true
 	return false
 
@@ -108,6 +109,7 @@ func update_doll_color_pattern(c : GameData.DollColor, p : GameData.DollPattern)
 func update_doll_head(h : GameData.DollHeadShape) -> bool:
 	if head_shape == GameData.DollHeadShape.NONE:
 		head_shape = h
+		emit_light_puff_particles()
 		return true
 	return false
 
@@ -115,11 +117,13 @@ func update_doll_head(h : GameData.DollHeadShape) -> bool:
 func update_doll_eyes(e : GameData.DollEyes) -> bool:
 	if eyes == GameData.DollEyes.NONE:
 		eyes = e
+		emit_light_puff_particles()
 		return true
 	return false
 
 
 func update_doll_eyes_count() -> void:
+	emit_light_puff_particles()
 	eyes_count += 1
 
 
@@ -132,7 +136,11 @@ func _on_area_2d_mouse_exited():
 
 
 func emit_puff_particles():
-	$CPUParticles2D.emitting = true
+	$ParticlesDarkPuff.emitting = true
+	
+
+func emit_light_puff_particles():
+	$ParticlesLightPuff.emitting = true
 
 
 func reset_mix():

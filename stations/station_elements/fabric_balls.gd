@@ -11,6 +11,9 @@ var offset : Vector2
 @export var color : GameData.DollColor = GameData.DollColor.RED
 @export var pattern : GameData.DollPattern = GameData.DollPattern.STRIPE
 
+var acceleration_y := 0.0
+var velocity_y := 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -18,9 +21,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if plucked && !clicked_on:
-		self.position.y += 0.1
+		acceleration_y = 0.03
+		velocity_y += acceleration_y
 		
-		if self.position.y >= 500:
+		self.position.y += velocity_y
+		
+		if self.position.y >= 560:
 			regen_fabric()
 	
 	if mouse_on && clickable:
@@ -50,6 +56,8 @@ func _on_area_2d_mouse_exited():
 	mouse_on = false
 
 func regen_fabric():
+	velocity_y = 0
+	acceleration_y = 0
 	position = home_pos
 	self.scale = Vector2(0,0)
 	plucked = false

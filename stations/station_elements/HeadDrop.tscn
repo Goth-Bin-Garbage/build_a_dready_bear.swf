@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://s8v8xflxej2p"]
+
+[ext_resource type="Script" path="res://stations/station_elements/head_drop.gd" id="1_4x1qo"]
+[ext_resource type="Texture2D" uid="uid://baret224tlvwb" path="res://sprites/ball.png" id="2_gxe1v"]
+[ext_resource type="Texture2D" uid="uid://cytf8y3od1off" path="res://sprites/stripes.png" id="3_lwu2s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kukia"]
+radius = 22.0227
+
+[node name="HeadDrop" type="Node2D"]
+script = ExtResource("1_4x1qo")
+
+[node name="Debug" type="ColorRect" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 2
+scale = Vector2(0.0749625, 0.0749625)
+texture = ExtResource("2_gxe1v")
+
+[node name="Pattern" type="Sprite2D" parent="Sprite2D"]
+visible = false
+texture = ExtResource("3_lwu2s")
+
+[node name="Area2D" type="Area2D" parent="." groups=["mixer_droppable"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kukia")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

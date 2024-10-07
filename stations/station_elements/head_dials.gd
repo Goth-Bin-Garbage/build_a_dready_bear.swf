@@ -8,6 +8,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+var head_drop_scene := preload("res://stations/station_elements/HeadDrop.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,6 +19,12 @@ func _process(delta):
 			self.rotate(PI / 2)
 			$Timer.start()
 			$ClickSound.play()
+			
+			var head_drop_instance := head_drop_scene.instantiate()
+			head_drop_instance.global_position = Vector2(global_position.x, global_position.y + 60)
+			head_drop_instance.head = head_type
+			get_parent().get_parent().get_node("Drops").add_child(head_drop_instance)
+			
 			# while(self.rotation_degrees <= 90.0):
 				# self.rotation_degrees += 0.01
 				# self.rotate(sign(PI / 2) * min(delta * 0.01, abs(PI / 2)))

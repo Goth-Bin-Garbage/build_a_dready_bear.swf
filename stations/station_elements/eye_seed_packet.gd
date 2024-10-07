@@ -27,8 +27,10 @@ func _process(delta):
 		self.rotation = 0
 		tween.tween_property(self, "global_position",home_pos,0.2).set_ease(Tween.EASE_OUT)
 
+
 func _on_area_2d_mouse_entered():
 	mouse_on = true
+
 
 func _on_area_2d_mouse_exited():
 	mouse_on = false
@@ -40,4 +42,4 @@ func _on_drop_collision_area_entered(area):
 	eye_plant_instance.global_position = area.get_parent().global_position
 	eye_plant_instance.name = "Plant_" + area.get_parent().name
 	print(eye_plant_instance)
-	get_parent().get_node("Plants").add_child(eye_plant_instance)
+	get_parent().get_node("Plants").call_deferred("add_child", eye_plant_instance)

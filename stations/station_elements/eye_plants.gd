@@ -21,9 +21,9 @@ func _process(delta):
 	
 	Global.plant_wait_times[self.name] = $Timer.wait_time
 	
-	clickable_eye.rotate((PI / 2) - ((PI / 2) * time_fraction))
+	clickable_eye.rotation = ((PI / 2) - ((PI / 2) * time_fraction))
 	
-	if clickable_eye.global_position.y <= 680:
+	if clickable_eye.global_position.y > 680:
 		self.queue_free()
 
 func _on_timer_timeout():

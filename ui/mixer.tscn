@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2pyds7hom2cf"]
+[gd_scene load_steps=20 format=3 uid="uid://2pyds7hom2cf"]
 
 [ext_resource type="Texture2D" uid="uid://8pwpj5t4qx76" path="res://sprites/mixer.png" id="1_7bdv8"]
 [ext_resource type="Script" path="res://ui/mixer.gd" id="1_v1nhw"]
@@ -8,6 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://k678yq0xhdu2" path="res://audio/sfx/soul_bear.wav" id="6_itk4d"]
 [ext_resource type="AudioStream" uid="uid://drdt3gxtauwuu" path="res://audio/sfx/soul_cat.wav" id="7_i25ye"]
 [ext_resource type="AudioStream" uid="uid://dssxjm630wv4e" path="res://audio/sfx/soul_frog.wav" id="8_c35e4"]
+[ext_resource type="Texture2D" uid="uid://fst28vrpoo50" path="res://sprites/mixer_contents_bubble.png" id="9_20vqx"]
+[ext_resource type="Texture2D" uid="uid://btxof6yi2uhpg" path="res://sprites/head_bear.png" id="10_mpbg7"]
+[ext_resource type="Texture2D" uid="uid://baret224tlvwb" path="res://sprites/ball.png" id="11_s8or1"]
+[ext_resource type="Texture2D" uid="uid://uyg05lmijmdd" path="res://sprites/eyezalea.png" id="12_2f5b3"]
+[ext_resource type="Texture2D" uid="uid://bkudh7i511aof" path="res://sprites/plaid.png" id="12_lsbpq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayyef"]
 size = Vector2(92, 180)
@@ -24,6 +29,14 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_dt7yd"]
 _data = [Vector2(0.0164835, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="SystemFont" id="SystemFont_una77"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="LabelSettings" id="LabelSettings_b1fex"]
+font = SubResource("SystemFont_una77")
+font_size = 76
+font_color = Color(0, 0, 0, 1)
 
 [node name="Mixer" type="Node2D" groups=["mixer"]]
 script = ExtResource("1_v1nhw")
@@ -98,6 +111,48 @@ stream = ExtResource("7_i25ye")
 [node name="SoulFrogSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_c35e4")
 
+[node name="MixerContents" type="Sprite2D" parent="."]
+position = Vector2(1, -167)
+scale = Vector2(0.308, 0.308)
+texture = ExtResource("9_20vqx")
+
+[node name="SpriteHead" type="Sprite2D" parent="MixerContents"]
+position = Vector2(-97.4026, -51.9481)
+scale = Vector2(0.436131, 0.436131)
+texture = ExtResource("10_mpbg7")
+
+[node name="SpriteColor" type="Sprite2D" parent="MixerContents"]
+position = Vector2(25.974, -133.117)
+scale = Vector2(0.136296, 0.136296)
+texture = ExtResource("11_s8or1")
+
+[node name="SpritePattern" type="Sprite2D" parent="MixerContents"]
+clip_children = 2
+position = Vector2(107.143, -45.4545)
+scale = Vector2(0.136296, 0.136296)
+texture = ExtResource("11_s8or1")
+
+[node name="Pattern" type="Sprite2D" parent="MixerContents/SpritePattern"]
+texture = ExtResource("12_lsbpq")
+
+[node name="SpriteEye" type="Sprite2D" parent="MixerContents"]
+position = Vector2(-113.636, 94.1558)
+scale = Vector2(0.175237, 0.175237)
+texture = ExtResource("12_2f5b3")
+
+[node name="Label" type="Label" parent="MixerContents"]
+offset_left = -52.0
+offset_top = 81.0
+offset_right = -2.0
+offset_bottom = 148.0
+text = "x1"
+label_settings = SubResource("LabelSettings_b1fex")
+
+[node name="MixerContentsEffectTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="area_entered" from="AreaInsert" to="." method="_on_area_insert_area_entered"]
+[connection signal="timeout" from="MixerContentsEffectTimer" to="." method="_on_mixer_contents_effect_timer_timeout"]

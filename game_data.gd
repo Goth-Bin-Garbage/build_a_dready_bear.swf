@@ -37,4 +37,21 @@ var doll_colors : Dictionary = {
 	DollColor.BLUE : Color.BLUE,
 	DollColor.GREEN : Color.GREEN
 }
+
+var doll_pattern_sprites : Dictionary = {
+	DollPattern.STRIPE : load("res://sprites/stripes.png"),
+	DollPattern.GRID : load("res://sprites/plaid.png"),
+	DollPattern.POLKA : load("res://sprites/polka.png")
+}
+
+var doll_head_sprites : Dictionary = {
+	DollHeadShape.BEAR : load("res://sprites/head_bear.png"),
+	DollHeadShape.KITTO : load("res://sprites/head_cat.png"),
+	DollHeadShape.FROG : load("res://sprites/head_frog.png")
+}
+
+var doll_eye_sprites : Dictionary = {
+	DollEyes.EYEZALEA : load("res://sprites/eyezalea.png"),
+	DollEyes.BUTTONS : load("res://sprites/buttonbuds.png")
+}
 # similar for, e.g., pattern, headshape... maybe return sprites?

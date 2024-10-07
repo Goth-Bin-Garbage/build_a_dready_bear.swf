@@ -28,6 +28,10 @@ var material_count : int
 @onready var area : Area2D = $Area2D
 var hovering_over_order : Node2D
 
+@onready var mixer_contents : Sprite2D = $MixerContents
+@onready var mixer_contents_scale := mixer_contents.scale.x
+@onready var mixer_contents_scale_max := mixer_contents_scale
+
 
 func _ready():
 	emit_puff_particles()
@@ -35,8 +39,17 @@ func _ready():
 
 
 func _process(delta):
+	var _piece 
 	if dragging:
 		adjust_snap_x()
+	
+	var _grow = 0.02 if mouse_over and not dragging else -0.02
+	_grow *= delta * 100
+	mixer_contents_scale = clamp(mixer_contents_scale + _grow, 0, mixer_contents_scale_max)
+	
+	update_content_preview()
+	
+	mixer_contents.scale = Vector2(mixer_contents_scale, mixer_contents_scale)
 		
 	scale = lerp(scale, scale_normal if !dragging else scale_dragging, .15)
 	
@@ -71,6 +84,7 @@ func _process(delta):
 			if other_mixer != self and other_mixer.snap_x == snap_x:
 				snap_x = old_snap_x
 				break
+		mouse_over = false
 		dragging = false
 		Global.dragging_something = false
 	
@@ -186,3 +200,46 @@ func reset_mix():
 	head_shape = GameData.DollHeadShape.NONE
 	eyes = GameData.DollEyes.NONE
 	eyes_count = 0
+
+
+func update_content_preview():
+	var has_anything := false
+	
+	if head_shape == GameData.DollHeadShape.NONE:
+		$MixerContents/SpriteHead.hide()
+	else:
+		has_anything = true
+		$MixerContents/SpriteHead.show()
+		$MixerContents/SpriteHead.texture = GameData.doll_head_sprites[head_shape]
+	
+	if pattern == GameData.DollPattern.NONE:
+		$MixerContents/SpritePattern.hide()
+	else:
+		has_anything = true
+		$MixerContents/SpritePattern.show()
+		$MixerContents/SpritePattern/Pattern.texture = GameData.doll_pattern_sprites[pattern]
+	
+	if color == GameData.DollColor.NONE:
+		$MixerContents/SpriteColor.hide()
+	else:
+		has_anything = true
+		$MixerContents/SpriteColor.show()
+		$MixerContents/SpriteColor.modulate = GameData.doll_colors[color]
+	
+	if eyes == GameData.DollEyes.NONE:
+		$MixerContents/SpriteEye.hide()
+		$MixerContents/Label.hide()
+	else:
+		has_anything = true
+		$MixerContents/SpriteEye.show()
+		$MixerContents/Label.show()
+		$MixerContents/Label.text = "x" + str(eyes_count)
+		$MixerContents/SpriteEye.texture = GameData.doll_eye_sprites[eyes]
+	
+	if !has_anything:
+		mixer_contents_scale = 0
+	
+
+func _on_mixer_contents_effect_timer_timeout():
+	for el in $MixerContents.get_children():
+		el.rotation = randf_range(-1,1) * PI/16

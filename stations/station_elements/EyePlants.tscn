@@ -8,14 +8,14 @@
 script = ExtResource("1_28m8h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(19, -118)
-scale = Vector2(0.2, 0.2)
+position = Vector2(10, -72)
+scale = Vector2(0.12, 0.12)
 texture = ExtResource("3_ui0j1")
 
 [node name="Eyes" parent="." instance=ExtResource("2_1l3y3")]
-position = Vector2(-2.99999, -234)
+position = Vector2(-4, -142)
 rotation = 1.5708
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1.02853, 1.02853)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.119

@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://5q0jxdblaucs"]
+[gd_scene load_steps=6 format=3 uid="uid://5q0jxdblaucs"]
 
 [ext_resource type="Script" path="res://stations/body_station.gd" id="1_vn254"]
 [ext_resource type="Texture2D" uid="uid://cfi5cf3pay6lg" path="res://sprites/emoji.png" id="2_7gaxd"]
+[ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="2_xhv2n"]
+[ext_resource type="AudioStream" uid="uid://ba17up7pxv17j" path="res://audio/music/body.mp3" id="3_00poj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b5s1"]
 size = Vector2(332, 218)
 
 [node name="BodyStation" type="Node2D"]
 script = ExtResource("1_vn254")
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("2_xhv2n")]
+stream = ExtResource("3_00poj")
+pitch_scale = 0.92
 
 [node name="Background" type="Sprite2D" parent="."]
 

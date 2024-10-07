@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://j6lysevhmgpd"]
+[gd_scene load_steps=6 format=3 uid="uid://j6lysevhmgpd"]
 
-[ext_resource type="Texture2D" uid="uid://cqjox7e1o3hqt" path="res://sprites/desk.png" id="1_h7ri4"]
 [ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_u72si"]
 [ext_resource type="Texture2D" uid="uid://camy5w6j8pap8" path="res://sprites/spr_grow_eyes_placeholder.png" id="2_1llut"]
-[ext_resource type="PackedScene" path="res://stations/station_elements/EyePlantPlot.tscn" id="3_f720y"]
+[ext_resource type="PackedScene" uid="uid://ce7ibreq8f4fh" path="res://stations/station_elements/EyePlantPlot.tscn" id="3_f720y"]
 
 [sub_resource type="Gradient" id="Gradient_tfn0n"]
 offsets = PackedFloat32Array(0.409091, 1)
@@ -21,21 +20,7 @@ offset_right = 802.0
 offset_bottom = 600.0
 texture = SubResource("GradientTexture2D_dmpsi")
 
-[node name="Sprite2D" type="Sprite2D" parent="TextureRect"]
-position = Vector2(400, 476)
-scale = Vector2(0.38, 0.38)
-texture = ExtResource("1_h7ri4")
-
 [node name="Music" parent="." instance=ExtResource("1_u72si")]
-
-[node name="EyePacket" parent="." instance=ExtResource("3_l3hae")]
-position = Vector2(673, 185)
-sprite_path = "res://sprites/eyezaleapack.png"
-
-[node name="EyeSeedPacket" parent="." instance=ExtResource("3_l3hae")]
-position = Vector2(704, 358)
-sprite_path = "res://sprites/button_buds.png"
-eye_type = 2
 
 [node name="PlaceholderSprite" type="Sprite2D" parent="."]
 position = Vector2(319, 370)

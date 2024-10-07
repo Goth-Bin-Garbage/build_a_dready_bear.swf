@@ -34,6 +34,7 @@ point_count = 2
 
 [sub_resource type="SystemFont" id="SystemFont_una77"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_b1fex"]
 font = SubResource("SystemFont_una77")

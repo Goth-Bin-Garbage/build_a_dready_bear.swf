@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _process(delta):
-	$DayNumberLabel.text = "DAY " + str(Global.day)
+	$DayNumberLabel.text = "DAY " + str(Global.day + 1)
 
 
 func _on_button_pressed():

@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var clickable_eye : Node2D = $Eyes
-@onready var plant_sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var plant_sprite : Sprite2D = $Sprite2D
 
 @export var plant_type : GameData.DollEyes = GameData.DollEyes.EYEZALEA
 

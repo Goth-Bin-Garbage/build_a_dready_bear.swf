@@ -104,6 +104,22 @@ func update_doll_color_pattern(c : GameData.DollColor, p : GameData.DollPattern)
 		emit_light_puff_particles()
 		return true
 	return false
+	
+
+func update_doll_pattern(p : GameData.DollPattern) -> bool:
+	if pattern == GameData.DollPattern.NONE:
+		pattern = p
+		emit_light_puff_particles()
+		return true
+	return false
+	
+
+func update_doll_color(c : GameData.DollColor) -> bool:
+	if color == GameData.DollColor.NONE:
+		color = c
+		emit_light_puff_particles()
+		return true
+	return false
 
 
 func update_doll_head(h : GameData.DollHeadShape) -> bool:

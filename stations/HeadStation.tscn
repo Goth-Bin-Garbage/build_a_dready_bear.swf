@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://tei5rxtfxt5g"]
 
 [ext_resource type="Script" path="res://stations/head_station.gd" id="1_75abx"]
-[ext_resource type="PackedScene" path="res://music.tscn" id="1_phd72"]
-[ext_resource type="AudioStream" uid="uid://u4bmsh0hu3va" path="res://audio/music/heads.mp3" id="2_hvqm0"]
+[ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_phd72"]
 [ext_resource type="PackedScene" uid="uid://dvviil6oqj26s" path="res://stations/station_elements/HeadDials.tscn" id="3_2khno"]
+[ext_resource type="AudioStream" uid="uid://bw1h4qo04pibi" path="res://audio/music/heads2.mp3" id="3_onq18"]
 [ext_resource type="Texture2D" uid="uid://bgpd3ovgroneq" path="res://sprites/machine3.png" id="4_pcjpq"]
 [ext_resource type="Texture2D" uid="uid://bu2sj2orkqff5" path="res://sprites/machine1.png" id="5_baueu"]
 [ext_resource type="Texture2D" uid="uid://s6np2sykew5q" path="res://sprites/machine2.png" id="6_q4psc"]
@@ -12,7 +12,7 @@
 script = ExtResource("1_75abx")
 
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("1_phd72")]
-stream = ExtResource("2_hvqm0")
+stream = ExtResource("3_onq18")
 
 [node name="HeadTubes" type="Node2D" parent="."]
 position = Vector2(0, -50)

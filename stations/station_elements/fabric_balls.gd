@@ -79,7 +79,11 @@ func _on_timer_timeout():
 
 
 func insert_into_mixer(mixer) -> void:
-	var successful_insert : bool = mixer.update_doll_color_pattern(color, pattern)
+	var successful_insert : bool
+	if fabric_type == "Pattern":
+		successful_insert = mixer.update_doll_pattern(pattern)
+	else:
+		successful_insert = mixer.update_doll_color(color)
 	if successful_insert:
 		Global.dragging_something = false
 		regen_fabric()

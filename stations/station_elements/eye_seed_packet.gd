@@ -37,4 +37,6 @@ func _on_area_2d_mouse_exited():
 func _on_drop_collision_area_entered(area):
 	var eye_plant_instance := eye_plant_scene.instantiate()
 	eye_plant_instance.plant_type = eye_type
+	eye_plant_instance.global_position = area.get_parent().global_position
+	eye_plant_instance.name = "Plant_" + area.get_partent().name
 	get_parent().get_parent().get_node("Plants").add_child(eye_plant_instance)

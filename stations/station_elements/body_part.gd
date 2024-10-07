@@ -5,11 +5,16 @@ var offset : Vector2
 
 @export var size : int = 0
 @onready var sprite_path : Array = []
+@export var part_type : String = "Body"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	size -= 1
-	$Sprite2D.texture = load(sprite_path[size])
+	if part_type == "Body":
+		$Body.visible = true
+		$Stuffing.visible = false
+	if part_type == "Stuffing":
+		$Body.visible = false
+		$Stuffing.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

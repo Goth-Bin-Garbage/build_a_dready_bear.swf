@@ -30,10 +30,12 @@ texture = ExtResource("1_h7ri4")
 [node name="Music" parent="." instance=ExtResource("1_u72si")]
 
 [node name="EyePacket" parent="." instance=ExtResource("3_l3hae")]
-position = Vector2(710, 165)
+position = Vector2(673, 185)
+sprite_path = "res://sprites/eyezaleapack.png"
 
 [node name="ButtonPacket" parent="." instance=ExtResource("3_l3hae")]
-position = Vector2(718, 272)
+position = Vector2(695, 357)
+sprite_path = "res://sprites/button_buds.png"
 eye_type = 2
 
 [node name="PlaceholderSprite" type="Sprite2D" parent="."]

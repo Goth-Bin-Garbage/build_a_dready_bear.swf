@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://peuqdai1wmub"]
 
 [ext_resource type="Script" path="res://ui/order.gd" id="1_2yje7"]
-[ext_resource type="Texture2D" uid="uid://dp3tbs85g74ix" path="res://sprites/order_note.png" id="1_mrj2b"]
-[ext_resource type="Texture2D" uid="uid://dajc232wovuxw" path="res://sprites/order_note_crumpled.png" id="3_o5g31"]
+[ext_resource type="Texture2D" uid="uid://bsnxifcb4sqdq" path="res://sprites/ticket1.png" id="2_h2yr2"]
+[ext_resource type="Texture2D" uid="uid://c6awhnuot50b1" path="res://sprites/ticket2.png" id="3_t0riv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m6q8c"]
 font_color = Color(0, 0, 0, 1)
@@ -25,21 +25,6 @@ tracks/0/keys = {
 "values": [Vector2(0, -158)]
 }
 
-[sub_resource type="Animation" id="Animation_ci7bd"]
-resource_name = "order_swoop_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteNode:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.277393, 1),
-"update": 0,
-"values": [Vector2(0, -158), Vector2(0, 92)]
-}
-
 [sub_resource type="Animation" id="Animation_ljf8n"]
 resource_name = "order_remove"
 tracks/0/type = "value"
@@ -53,6 +38,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(3.605, 1),
 "update": 0,
 "values": [Vector2(0, 92), Vector2(1, -220)]
+}
+
+[sub_resource type="Animation" id="Animation_ci7bd"]
+resource_name = "order_swoop_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.277393, 1),
+"update": 0,
+"values": [Vector2(0, -158), Vector2(0, 92)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38onp"]
@@ -69,9 +69,8 @@ script = ExtResource("1_2yje7")
 position = Vector2(0, -158)
 
 [node name="SpriteNormal" type="Sprite2D" parent="SpriteNode"]
-visible = false
 position = Vector2(-3, 4)
-texture = ExtResource("1_mrj2b")
+texture = ExtResource("2_h2yr2")
 
 [node name="EyesLabel" type="Label" parent="SpriteNode/SpriteNormal"]
 offset_left = -28.0
@@ -106,13 +105,13 @@ text = "color"
 label_settings = SubResource("LabelSettings_m6q8c")
 
 [node name="SpriteCrumpled" type="Sprite2D" parent="SpriteNode"]
-position = Vector2(-16, -64)
-texture = ExtResource("3_o5g31")
+position = Vector2(-4, -64)
+texture = ExtResource("3_t0riv")
 
 [node name="ProgressBar" type="ProgressBar" parent="SpriteNode/SpriteCrumpled"]
-offset_left = -41.0
+offset_left = -52.0
 offset_top = 1.0
-offset_right = 51.0
+offset_right = 40.0
 offset_bottom = 13.0
 rotation = -0.0638863
 value = 100.0

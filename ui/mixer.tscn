@@ -13,7 +13,7 @@
 size = Vector2(92, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mgfm"]
-size = Vector2(70, 34)
+size = Vector2(70, 74)
 
 [sub_resource type="Curve" id="Curve_5lo4q"]
 min_value = -360.0
@@ -40,7 +40,7 @@ shape = SubResource("RectangleShape2D_ayyef")
 [node name="AreaInsert" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaInsert"]
-position = Vector2(0, -69)
+position = Vector2(-1, -49)
 shape = SubResource("RectangleShape2D_0mgfm")
 
 [node name="ParticlesDarkPuff" type="CPUParticles2D" parent="."]

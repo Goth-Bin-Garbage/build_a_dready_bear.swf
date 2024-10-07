@@ -50,6 +50,31 @@ func _ready():
 	eyes_label.text = "eyes: " + str(eyes)
 	head_label.text = "head: " + str(head_shape)
 	
+	$SpriteNode/SpriteNormal/FabricSprite.modulate = GameData.doll_colors[color]
+	match pattern:
+		GameData.DollPattern.STRIPE:
+			$SpriteNode/SpriteNormal/FabricSprite/Pattern.texture = load("res://sprites/stripes.png")
+		GameData.DollPattern.POLKA:
+			$SpriteNode/SpriteNormal/FabricSprite/Pattern.texture = load("res://sprites/polka.png")
+		GameData.DollPattern.GRID:
+			$SpriteNode/SpriteNormal/FabricSprite/Pattern.texture = load("res://sprites/plaid.png")
+	
+	$SpriteNode/SpriteNormal/HeadSprite/SpriteBear.hide()
+	$SpriteNode/SpriteNormal/HeadSprite/SpriteCat.hide()
+	$SpriteNode/SpriteNormal/HeadSprite/SpriteFrog.hide()
+	
+	match head_shape:
+		GameData.DollHeadShape.BEAR:
+			$SpriteNode/SpriteNormal/HeadSprite/SpriteBear.show()
+		GameData.DollHeadShape.KITTO:
+			$SpriteNode/SpriteNormal/HeadSprite/SpriteCat.show()
+		GameData.DollHeadShape.FROG:
+			$SpriteNode/SpriteNormal/HeadSprite/SpriteFrog.show()
+			
+	$SpriteNode/SpriteNormal/EyeCountLabel.text = "x " + str(eyes_count)
+	$SpriteNode/SpriteNormal/MaterialCountLabel.text = "x 2"
+
+	
 	life_timer.wait_time = GameData.order_life_time
 	progress_bar.max_value = GameData.order_life_time
 	

@@ -1,11 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://peuqdai1wmub"]
+[gd_scene load_steps=20 format=3 uid="uid://peuqdai1wmub"]
 
 [ext_resource type="Script" path="res://ui/order.gd" id="1_2yje7"]
 [ext_resource type="Texture2D" uid="uid://bsnxifcb4sqdq" path="res://sprites/ticket1.png" id="2_h2yr2"]
+[ext_resource type="Texture2D" uid="uid://baret224tlvwb" path="res://sprites/ball.png" id="3_3o88j"]
 [ext_resource type="Texture2D" uid="uid://btxof6yi2uhpg" path="res://sprites/head_bear.png" id="3_emqhx"]
 [ext_resource type="Texture2D" uid="uid://c6awhnuot50b1" path="res://sprites/ticket2.png" id="3_t0riv"]
 [ext_resource type="Texture2D" uid="uid://b0m2kdlmb6136" path="res://sprites/head_cat.png" id="4_0xeyg"]
+[ext_resource type="Texture2D" uid="uid://cytf8y3od1off" path="res://sprites/stripes.png" id="4_5isi3"]
 [ext_resource type="Texture2D" uid="uid://bkub0is61qtmj" path="res://sprites/head_frog.png" id="5_dv5ac"]
+[ext_resource type="Texture2D" uid="uid://uyg05lmijmdd" path="res://sprites/eyezalea.png" id="8_tth1a"]
+[ext_resource type="Texture2D" uid="uid://b1m2tnakwt0kt" path="res://sprites/buttonbuds.png" id="9_y3l56"]
+[ext_resource type="Texture2D" uid="uid://bc4qnl70go40y" path="res://sprites/material.png" id="10_ikp11"]
+
+[sub_resource type="SystemFont" id="SystemFont_vnrtw"]
+font_names = PackedStringArray("Comic Sans MS")
+oversampling = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_17jat"]
+font = SubResource("SystemFont_vnrtw")
+font_size = 21
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m6q8c"]
 font_color = Color(0, 0, 0, 1)
@@ -75,22 +89,66 @@ position = Vector2(0, -158)
 position = Vector2(-3, 4)
 texture = ExtResource("2_h2yr2")
 
+[node name="FabricSprite" type="Sprite2D" parent="SpriteNode/SpriteNormal"]
+clip_children = 2
+position = Vector2(1, -54)
+scale = Vector2(0.047976, 0.047976)
+texture = ExtResource("3_3o88j")
+
+[node name="Pattern" type="Sprite2D" parent="SpriteNode/SpriteNormal/FabricSprite"]
+texture = ExtResource("4_5isi3")
+
 [node name="HeadSprite" type="Node2D" parent="SpriteNode/SpriteNormal"]
+position = Vector2(3, -12)
 
 [node name="SpriteBear" type="Sprite2D" parent="SpriteNode/SpriteNormal/HeadSprite"]
-position = Vector2(1, -11)
+position = Vector2(-1.50186, -0.285439)
 scale = Vector2(0.115672, 0.115672)
 texture = ExtResource("3_emqhx")
 
 [node name="SpriteCat" type="Sprite2D" parent="SpriteNode/SpriteNormal/HeadSprite"]
-position = Vector2(1, -11)
+position = Vector2(-1.50186, -0.285439)
 scale = Vector2(0.115672, 0.115672)
 texture = ExtResource("4_0xeyg")
 
 [node name="SpriteFrog" type="Sprite2D" parent="SpriteNode/SpriteNormal/HeadSprite"]
-position = Vector2(1, -11)
+position = Vector2(-1.50186, -0.285439)
 scale = Vector2(0.115672, 0.115672)
 texture = ExtResource("5_dv5ac")
+
+[node name="EyeSprite" type="Node2D" parent="SpriteNode/SpriteNormal"]
+position = Vector2(-14, 22)
+
+[node name="SpriteEyezalea" type="Sprite2D" parent="SpriteNode/SpriteNormal/EyeSprite"]
+position = Vector2(-1, 0)
+scale = Vector2(0.047976, 0.047976)
+texture = ExtResource("8_tth1a")
+
+[node name="SpriteButtonBuds" type="Sprite2D" parent="SpriteNode/SpriteNormal/EyeSprite"]
+position = Vector2(-2, 0)
+scale = Vector2(0.047976, 0.047976)
+texture = ExtResource("9_y3l56")
+
+[node name="EyeCountLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 37.0
+text = "x 3"
+label_settings = SubResource("LabelSettings_17jat")
+
+[node name="MaterialCountLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+offset_left = 4.0
+offset_top = 47.0
+offset_right = 44.0
+offset_bottom = 78.0
+text = "x 3"
+label_settings = SubResource("LabelSettings_17jat")
+
+[node name="MaterialSprite" type="Sprite2D" parent="SpriteNode/SpriteNormal"]
+position = Vector2(-18, 62)
+scale = Vector2(0.0766667, 0.0766667)
+texture = ExtResource("10_ikp11")
 
 [node name="EyesLabel" type="Label" parent="SpriteNode/SpriteNormal"]
 visible = false

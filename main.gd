@@ -73,6 +73,10 @@ func start_day() -> void:
 	$UI/StationButtons.show()
 	$Logic/OrderTimer.start()
 	
+	$UI/Mixers/Mixer.reset_mix()
+	$UI/Mixers/Mixer2.reset_mix()
+	$UI/Mixers/Mixer3.reset_mix()
+	
 	# if tutorial day, start with an order
 	if Global.day == 0:
 		new_order()

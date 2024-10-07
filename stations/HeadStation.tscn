@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://tei5rxtfxt5g"]
+[gd_scene load_steps=8 format=3 uid="uid://tei5rxtfxt5g"]
 
 [ext_resource type="Script" path="res://stations/head_station.gd" id="1_75abx"]
 [ext_resource type="PackedScene" path="res://music.tscn" id="1_phd72"]
 [ext_resource type="AudioStream" uid="uid://u4bmsh0hu3va" path="res://audio/music/heads.mp3" id="2_hvqm0"]
 [ext_resource type="PackedScene" uid="uid://dvviil6oqj26s" path="res://stations/station_elements/HeadDials.tscn" id="3_2khno"]
-[ext_resource type="Texture2D" uid="uid://cxmoelru2p2w4" path="res://sprites/hi.png" id="5_p0lqc"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cbpuj"]
-radius = 24.0208
+[ext_resource type="Texture2D" uid="uid://bgpd3ovgroneq" path="res://sprites/machine3.png" id="4_pcjpq"]
+[ext_resource type="Texture2D" uid="uid://bu2sj2orkqff5" path="res://sprites/machine1.png" id="5_baueu"]
+[ext_resource type="Texture2D" uid="uid://s6np2sykew5q" path="res://sprites/machine2.png" id="6_q4psc"]
 
 [node name="HeadStation" type="Node2D"]
 script = ExtResource("1_75abx")
@@ -15,40 +14,34 @@ script = ExtResource("1_75abx")
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("1_phd72")]
 stream = ExtResource("2_hvqm0")
 
+[node name="HeadTubes" type="Node2D" parent="."]
+position = Vector2(0, -50)
+
+[node name="Tube1" type="Sprite2D" parent="HeadTubes"]
+position = Vector2(143, 259)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("4_pcjpq")
+
+[node name="Tube2" type="Sprite2D" parent="HeadTubes"]
+position = Vector2(398, 257)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("5_baueu")
+
+[node name="Tube3" type="Sprite2D" parent="HeadTubes"]
+position = Vector2(645, 256)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("6_q4psc")
+
 [node name="Dials" type="Node2D" parent="."]
+position = Vector2(0, -50)
 
 [node name="HeadDials" parent="Dials" instance=ExtResource("3_2khno")]
-position = Vector2(93, 297)
+position = Vector2(145, 350)
 
 [node name="HeadDials2" parent="Dials" instance=ExtResource("3_2khno")]
-position = Vector2(237, 290)
-
-[node name="HeadDials3" parent="Dials" instance=ExtResource("3_2khno")]
-position = Vector2(397, 287)
-head_type = 2
-
-[node name="HeadDials4" parent="Dials" instance=ExtResource("3_2khno")]
-position = Vector2(566, 286)
+position = Vector2(648, 347)
 head_type = 3
 
-[node name="HeadDials5" parent="Dials" instance=ExtResource("3_2khno")]
-position = Vector2(726, 294)
-head_type = 4
-
-[node name="MasterDial" type="Node2D" parent="."]
-position = Vector2(397, 405)
-
-[node name="Sprite2D" type="Sprite2D" parent="MasterDial"]
-texture = ExtResource("5_p0lqc")
-
-[node name="Area2D" type="Area2D" parent="MasterDial"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MasterDial/Area2D"]
-shape = SubResource("CircleShape2D_cbpuj")
-
-[node name="MasterDialTimer" type="Timer" parent="."]
-wait_time = 3.0
-
-[connection signal="mouse_entered" from="MasterDial/Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="MasterDial/Area2D" to="." method="_on_area_2d_mouse_exited"]
-[connection signal="timeout" from="MasterDialTimer" to="." method="_on_master_dial_timer_timeout"]
+[node name="HeadDials3" parent="Dials" instance=ExtResource("3_2khno")]
+position = Vector2(401, 347)
+head_type = 2

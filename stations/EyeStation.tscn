@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://j6lysevhmgpd"]
+[gd_scene load_steps=11 format=3 uid="uid://j6lysevhmgpd"]
 
+[ext_resource type="Texture2D" uid="uid://cqjox7e1o3hqt" path="res://sprites/desk.png" id="1_h7ri4"]
 [ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_u72si"]
 [ext_resource type="Texture2D" uid="uid://camy5w6j8pap8" path="res://sprites/spr_grow_eyes_placeholder.png" id="2_1llut"]
-[ext_resource type="PackedScene" path="res://stations/station_elements/EyePlantPlot.tscn" id="3_f720y"]
+[ext_resource type="PackedScene" uid="uid://ce7ibreq8f4fh" path="res://stations/station_elements/EyePlantPlot.tscn" id="3_f720y"]
 [ext_resource type="PackedScene" uid="uid://cubmx3r8jvxsr" path="res://stations/station_elements/EyeSeedPacket.tscn" id="4_1yx2c"]
+[ext_resource type="Texture2D" uid="uid://cofihw3o886cm" path="res://sprites/pot2.png" id="4_7hf2q"]
+[ext_resource type="Texture2D" uid="uid://ch0gkdsp2ekp1" path="res://sprites/dirt.png" id="5_67dp1"]
+[ext_resource type="Texture2D" uid="uid://b5k3c2axb4bp4" path="res://sprites/pot1.png" id="7_nid7h"]
 
 [sub_resource type="Gradient" id="Gradient_tfn0n"]
 offsets = PackedFloat32Array(0.409091, 1)
@@ -24,8 +28,63 @@ texture = SubResource("GradientTexture2D_dmpsi")
 [node name="Music" parent="." instance=ExtResource("1_u72si")]
 
 [node name="PlaceholderSprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(319, 370)
 texture = ExtResource("2_1llut")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(413, 471)
+scale = Vector2(0.299999, 0.299999)
+texture = ExtResource("1_h7ri4")
+
+[node name="BackPot" type="Sprite2D" parent="."]
+position = Vector2(322, 419)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_7hf2q")
+
+[node name="Plants" type="Node2D" parent="."]
+
+[node name="Dirts" type="Node2D" parent="."]
+
+[node name="Dirt" type="Sprite2D" parent="Dirts"]
+position = Vector2(202.35, 373.05)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_67dp1")
+
+[node name="Dirt2" type="Sprite2D" parent="Dirts"]
+position = Vector2(299, 373)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_67dp1")
+
+[node name="Dirt3" type="Sprite2D" parent="Dirts"]
+position = Vector2(380, 370)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_67dp1")
+
+[node name="Dirt4" type="Sprite2D" parent="Dirts"]
+position = Vector2(452, 370)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_67dp1")
+
+[node name="Dirt5" type="Sprite2D" parent="Dirts"]
+position = Vector2(180, 425)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_67dp1")
+
+[node name="Dirt6" type="Sprite2D" parent="Dirts"]
+position = Vector2(284, 428)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_67dp1")
+
+[node name="Dirt7" type="Sprite2D" parent="Dirts"]
+position = Vector2(376, 423)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_67dp1")
+
+[node name="Dirt8" type="Sprite2D" parent="Dirts"]
+position = Vector2(476, 425)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_67dp1")
 
 [node name="SeedSpots" type="Node2D" parent="."]
 
@@ -48,12 +107,15 @@ position = Vector2(182, 377)
 position = Vector2(284, 378)
 
 [node name="B3" parent="SeedSpots" instance=ExtResource("3_f720y")]
-position = Vector2(361, 375)
+position = Vector2(376, 372)
 
 [node name="B4" parent="SeedSpots" instance=ExtResource("3_f720y")]
-position = Vector2(438, 375)
+position = Vector2(475, 370)
 
-[node name="Plants" type="Node2D" parent="."]
+[node name="FrontPot" type="Sprite2D" parent="."]
+position = Vector2(317, 412)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("7_nid7h")
 
 [node name="EyeSeedPacket" parent="." instance=ExtResource("4_1yx2c")]
 position = Vector2(640, 150)

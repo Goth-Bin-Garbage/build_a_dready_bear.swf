@@ -16,6 +16,7 @@ func _process(delta):
 			clickable = false
 			self.rotate(PI / 2)
 			$Timer.start()
+			$ClickSound.play()
 			# while(self.rotation_degrees <= 90.0):
 				# self.rotation_degrees += 0.01
 				# self.rotate(sign(PI / 2) * min(delta * 0.01, abs(PI / 2)))

@@ -152,10 +152,12 @@ func _on_area_2d_mouse_exited():
 
 
 func emit_puff_particles():
+	$PuffSound.play()
 	$ParticlesDarkPuff.emitting = true
 	
 
 func emit_light_puff_particles():
+	$PuffSound.play()
 	$ParticlesLightPuff.emitting = true
 
 

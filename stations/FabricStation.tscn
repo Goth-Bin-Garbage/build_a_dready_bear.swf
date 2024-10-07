@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddpwu6b6abc83"]
+[gd_scene load_steps=8 format=3 uid="uid://ddpwu6b6abc83"]
 
 [ext_resource type="Script" path="res://stations/fabric_station.gd" id="1_m74u4"]
 [ext_resource type="PackedScene" uid="uid://c8rq8ff8w1aco" path="res://stations/station_elements/FabricBalls.tscn" id="2_e2f0m"]
+[ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="2_kal57"]
 [ext_resource type="Texture2D" uid="uid://c6s8r0jqaup1d" path="res://sprites/picker.png" id="2_l17j0"]
+[ext_resource type="AudioStream" uid="uid://r4ep63wgsq6g" path="res://audio/music/fabric.mp3" id="3_siuee"]
 
 [sub_resource type="Gradient" id="Gradient_3thn6"]
 colors = PackedColorArray(0, 0, 0, 1, 0.362559, 0, 0.0567371, 1)
@@ -14,6 +16,9 @@ fill_to = Vector2(0.981651, 1)
 
 [node name="FabricStation" type="Node2D"]
 script = ExtResource("1_m74u4")
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("2_kal57")]
+stream = ExtResource("3_siuee")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 800.0

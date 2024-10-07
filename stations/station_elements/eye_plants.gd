@@ -8,20 +8,29 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.start()
+	clickable_eye.visible = false
 	
 	if plant_type == GameData.DollEyes.EYEZALEA:
-		clickable_eye.sprite_path = "res://sprites/eye_seed.png"
+		plant_sprite.play("Eyezalea")
+		clickable_eye.sprite_path = "res://sprites/eyezalea.png"
+		clickable_eye.position = $EyezaleaMarker.position
 	if plant_type == GameData.DollEyes.BUTTONS:
-		clickable_eye.sprite_path = "res://sprites/button_seed.png"
+		plant_sprite.play("Buttonbud")
+		clickable_eye.sprite_path = "res://sprites/buttonbuds.png"
+		clickable_eye.position = $ButtonbudMarker.position
+	
+	plant_sprite.frame = 0
+	plant_sprite.pause()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var time_spent = 20 - $Timer.time_left
 	var time_fraction = time_spent / 20.0
 	
-	Global.plant_wait_times[self.name] = $Timer.wait_time
-	
-	clickable_eye.rotate((PI / 2) - ((PI / 2) * time_fraction))
+	if time_fraction == (1/2):
+		plant_sprite.frame = 1
+	if time_fraction == (3/4):
+		plant_sprite.frame = 2
 	
 	if clickable_eye.global_position.y <= 680:
 		self.queue_free()

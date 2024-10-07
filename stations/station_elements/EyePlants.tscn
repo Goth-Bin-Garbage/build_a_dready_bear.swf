@@ -1,24 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmf7ddqcy4ypm"]
+[gd_scene load_steps=3 format=3 uid="uid://bmf7ddqcy4ypm"]
 
 [ext_resource type="Script" path="res://stations/station_elements/eye_plants.gd" id="1_28m8h"]
 [ext_resource type="PackedScene" uid="uid://eal8jub5jf6d" path="res://stations/station_elements/Eyes.tscn" id="2_1l3y3"]
-[ext_resource type="Texture2D" uid="uid://c4bavuspw8o35" path="res://sprites/stem.png" id="3_ui0j1"]
 
 [node name="EyePlants" type="Node2D"]
 script = ExtResource("1_28m8h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(19, -118)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_ui0j1")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="Eyes" parent="." instance=ExtResource("2_1l3y3")]
-position = Vector2(-2.99999, -234)
-rotation = 1.5708
-scale = Vector2(0.8, 0.8)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
+
+[node name="EyezaleaMarker" type="Marker2D" parent="."]
+
+[node name="ButtonbudMarker" type="Marker2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

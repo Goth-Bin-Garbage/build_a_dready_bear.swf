@@ -1,8 +1,6 @@
 extends Node
 
 @onready var main : Node2D = get_tree().get_root().get_node("Main")
-@onready var plant_wait_times : Dictionary = { "Plant_A1": 0, "Plant_A2": 0, "Plant_A3": 0, "Plant_A4": 0, 
-"Plant_B1": 0, "Plant_B2": 0, "Plant_B3": 0, "Plant_B4": 0, }
 
 # day 0 = tutorial, day = 1 true game
 var day : int = 0

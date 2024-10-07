@@ -121,7 +121,7 @@ func _process(delta):
 	if !Global.dragging_something and i_am_the_chosen_one and !mixer_inside_me:
 		animate_then_delete()
 		
-		var _y = Global.window_size.y + 100
+		var _y =  get_viewport().get_visible_rect().size.y + 100
 		mixer_over_me.global_position = Vector2(mixer_over_me.old_snap_x, _y)
 		mixer_over_me.emit_puff_particles()
 		
@@ -161,7 +161,7 @@ func calculate_x() -> float:
 	# offset for right-most order
 	var _o := -60
 	
-	return Global.window_size.x + _o - _w * i
+	return get_viewport().get_visible_rect().size.x + _o - _w * i
 
 
 func check_order() -> float:

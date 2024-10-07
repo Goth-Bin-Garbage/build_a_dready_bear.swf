@@ -14,6 +14,8 @@ var offset : Vector2
 var acceleration_y := 0.0
 var velocity_y := 0.0
 
+var dragging := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if fabric_type == "Color":
@@ -45,14 +47,16 @@ func _process(delta):
 			offset = get_global_mouse_position() - global_position
 			$ClickSound.play()
 			plucked = true
+			dragging = true
 		
-		if Input.is_action_pressed("left_mouse_click") and plucked:
-			global_position = get_global_mouse_position() - offset
-			clicked_on = true
+	if dragging:
+		global_position = get_global_mouse_position() - offset
+		clicked_on = true
 		
-		elif Input.is_action_just_released("left_mouse_click"):
-			Global.dragging_something = false
-			clicked_on = false
+	if Input.is_action_just_released("left_mouse_click"):
+		Global.dragging_something = false
+		dragging = false
+		clicked_on = false
 	
 	if !clickable:
 		if self.scale != Vector2(1.0,1.0):
@@ -65,9 +69,6 @@ func _on_area_2d_mouse_entered():
 	mouse_on = true
 
 func _on_area_2d_mouse_exited():
-	if clicked_on:
-		clicked_on = false
-		Global.dragging_something = false
 	mouse_on = false
 
 func regen_fabric():

@@ -24,7 +24,6 @@ func _ready():
 func _process(delta):
 	if clickable:
 		$Sprite2D.texture = GameData.doll_eye_sprites[eye_type]
-		$Sprite2D.scale = Vector2(0.1, 0.1)
 		z_index = 999
 	else:
 		return

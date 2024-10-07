@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://fst28vrpoo50" path="res://sprites/mixer_contents_bubble.png" id="9_20vqx"]
 [ext_resource type="Texture2D" uid="uid://btxof6yi2uhpg" path="res://sprites/head_bear.png" id="10_mpbg7"]
 [ext_resource type="Texture2D" uid="uid://baret224tlvwb" path="res://sprites/ball.png" id="11_s8or1"]
-[ext_resource type="Texture2D" uid="uid://uyg05lmijmdd" path="res://sprites/eyezalea.png" id="12_2f5b3"]
 [ext_resource type="Texture2D" uid="uid://bkudh7i511aof" path="res://sprites/plaid.png" id="12_lsbpq"]
+[ext_resource type="Texture2D" uid="uid://dswq3ivvhgrq5" path="res://sprites/eye_seed.png" id="13_bcvkp"]
 [ext_resource type="Texture2D" uid="uid://bededruqh5sox" path="res://sprites/material_stuffing.png" id="14_c7rpf"]
 [ext_resource type="Texture2D" uid="uid://btvy7rrjkdq1h" path="res://sprites/material_skin.png" id="15_dp3vm"]
 
@@ -141,8 +141,8 @@ texture = ExtResource("12_lsbpq")
 
 [node name="SpriteEye" type="Sprite2D" parent="MixerContents"]
 position = Vector2(-34.8837, 8.72093)
-scale = Vector2(0.138446, 0.138446)
-texture = ExtResource("12_2f5b3")
+scale = Vector2(0.184765, 0.184765)
+texture = ExtResource("13_bcvkp")
 
 [node name="Label" type="Label" parent="MixerContents"]
 offset_left = 14.5349

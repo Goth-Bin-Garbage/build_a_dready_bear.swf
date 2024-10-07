@@ -52,8 +52,8 @@ var doll_head_sprites : Dictionary = {
 }
 
 var doll_eye_sprites : Dictionary = {
-	DollEyes.EYEZALEA : load("res://sprites/eyezalea.png"),
-	DollEyes.BUTTONS : load("res://sprites/buttonbuds.png")
+	DollEyes.EYEZALEA : load("res://sprites/eye_seed.png"),
+	DollEyes.BUTTONS : load("res://sprites/button_seed.png")
 }
 
 var doll_material_sprites : Dictionary = {

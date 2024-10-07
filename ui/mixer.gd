@@ -94,7 +94,7 @@ func _process(delta):
 	else:
 		global_position = lerp(
 			global_position,
-			Vector2(snap_x, Global.window_size.y - offset_from_bottom),
+			Vector2(snap_x, get_viewport().get_visible_rect().size.y - offset_from_bottom),
 			snap_weight
 		)
 	
@@ -104,11 +104,11 @@ func _process(delta):
 
 
 func adjust_snap_x():
-	var _snap_width = Global.window_size.x / (mixer_positions+1)
+	var _snap_width = get_viewport().get_visible_rect().size.x / (mixer_positions+1)
 	snap_x = clamp(
 		round(global_position.x / _snap_width) * _snap_width,
 		_snap_width,
-		Global.window_size.x - _snap_width
+		 get_viewport().get_visible_rect().size.x - _snap_width
 	)
 
 
@@ -242,6 +242,7 @@ func update_content_preview():
 	if eyes == GameData.DollEyes.NONE:
 		$MixerContents/SpriteEye.hide()
 		$MixerContents/Label.hide()
+		$MixerContents/Label.text = ""
 	else:
 		has_anything = true
 		$MixerContents/SpriteEye.show()
@@ -253,6 +254,7 @@ func update_content_preview():
 	if material_stuffing_count <= 0:
 		$MixerContents/SpriteStuffing.hide()
 		$MixerContents/LabelStuffing.hide()
+		$MixerContents/LabelStuffing.text = ""
 	else:
 		has_anything = true
 		$MixerContents/SpriteStuffing.show()
@@ -262,7 +264,8 @@ func update_content_preview():
 	
 	if material_skin_count <= 0:
 		$MixerContents/SpriteSkin.hide()
-		$MixerContents/LabelSkin.show()
+		$MixerContents/LabelSkin.hide()
+		$MixerContents/LabelSkin.text = ""
 	else:
 		has_anything = true
 		$MixerContents/SpriteSkin.show()

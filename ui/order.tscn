@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b0m2kdlmb6136" path="res://sprites/head_cat.png" id="4_0xeyg"]
 [ext_resource type="Texture2D" uid="uid://cytf8y3od1off" path="res://sprites/stripes.png" id="4_5isi3"]
 [ext_resource type="Texture2D" uid="uid://bkub0is61qtmj" path="res://sprites/head_frog.png" id="5_dv5ac"]
-[ext_resource type="Texture2D" uid="uid://uyg05lmijmdd" path="res://sprites/eyezalea.png" id="8_tth1a"]
-[ext_resource type="Texture2D" uid="uid://b1m2tnakwt0kt" path="res://sprites/buttonbuds.png" id="9_y3l56"]
+[ext_resource type="Texture2D" uid="uid://dswq3ivvhgrq5" path="res://sprites/eye_seed.png" id="8_mr7v2"]
+[ext_resource type="Texture2D" uid="uid://cl76uoii0evyj" path="res://sprites/button_seed.png" id="9_l152i"]
 [ext_resource type="Texture2D" uid="uid://bc4qnl70go40y" path="res://sprites/material.png" id="10_ikp11"]
 
 [sub_resource type="SystemFont" id="SystemFont_vnrtw"]
@@ -122,13 +122,13 @@ position = Vector2(-14, 22)
 
 [node name="SpriteEyezalea" type="Sprite2D" parent="SpriteNode/SpriteNormal/EyeSprite"]
 position = Vector2(-1, 0)
-scale = Vector2(0.047976, 0.047976)
-texture = ExtResource("8_tth1a")
+scale = Vector2(0.0677966, 0.0677966)
+texture = ExtResource("8_mr7v2")
 
 [node name="SpriteButtonBuds" type="Sprite2D" parent="SpriteNode/SpriteNormal/EyeSprite"]
 position = Vector2(-2, 0)
-scale = Vector2(0.047976, 0.047976)
-texture = ExtResource("9_y3l56")
+scale = Vector2(0.0645161, 0.0645161)
+texture = ExtResource("9_l152i")
 
 [node name="EyeCountLabel" type="Label" parent="SpriteNode/SpriteNormal"]
 offset_left = 4.0

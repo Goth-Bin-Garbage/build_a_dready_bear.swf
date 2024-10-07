@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://eal8jub5jf6d"]
+[gd_scene load_steps=4 format=3 uid="uid://eal8jub5jf6d"]
 
 [ext_resource type="Script" path="res://stations/station_elements/eyes.gd" id="1_81wgs"]
+[ext_resource type="Texture2D" uid="uid://beehstflbiknq" path="res://sprites/bud.png" id="2_20hvc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tb0k1"]
+radius = 41.1096
 
 [node name="Eyes" type="Node2D"]
 script = ExtResource("1_81wgs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -31.2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_20hvc")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -31.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_tb0k1")

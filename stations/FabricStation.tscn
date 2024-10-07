@@ -17,7 +17,7 @@ fill_to = Vector2(0.981651, 1)
 [node name="FabricStation" type="Node2D"]
 script = ExtResource("1_m74u4")
 
-[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("2_kal57")]
+[node name="Music" parent="." instance=ExtResource("2_kal57")]
 stream = ExtResource("3_siuee")
 
 [node name="TextureRect" type="TextureRect" parent="."]

@@ -11,7 +11,7 @@
 [node name="HeadStation" type="Node2D"]
 script = ExtResource("1_75abx")
 
-[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("1_phd72")]
+[node name="Music" parent="." instance=ExtResource("1_phd72")]
 stream = ExtResource("3_onq18")
 
 [node name="HeadTubes" type="Node2D" parent="."]

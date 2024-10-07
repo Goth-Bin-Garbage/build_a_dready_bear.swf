@@ -8,6 +8,9 @@ var new_order_attempt_chance := 0.25
 
 var order_life_time := 60.0 * 2 # 2 minutes
 
+var number_orders_first_day := 3
+var number_orders_second_day := 6
+
 # References to stuff
 enum Station {FABRIC, HEAD, EYES, BODY, LIMBS, MIX}
 var stations_dir = "res://stations/"

@@ -10,11 +10,15 @@ extends Node2D
 @onready var ui_node := $UI
 @onready var ui_orders_node := $UI/Orders
 
+var day_score := 0
+
+var orders_todo_today := 0
 var orders_received := 0
+var orders_handled := 0
 
 
 func _ready():
-	load_station(Global.get_station_scene_file(GameData.Station.FABRIC))
+	start_day()
 
 
 func _process(delta):
@@ -59,11 +63,40 @@ func new_order() -> void:
 	# block creating new order if there are too many
 	if self.orders.size() >= get_maximum_number_of_orders():
 		return
+	if orders_received >= orders_todo_today:
+		return
 	var order_instance = order_scene.instantiate()
 	order_instance.name = "order_" + str(orders_received)
 	ui_orders_node.add_child(order_instance)
 	orders.append(order_instance)
 	orders_received += 1
+
+func start_day() -> void:
+	orders_todo_today = GameData.number_orders_first_day
+	if Global.day == 1:
+		orders_todo_today = GameData.number_orders_second_day
+	day_score = 0
+	orders_received = 0
+	orders_handled = 0
+	load_station(Global.get_station_scene_file(GameData.Station.FABRIC))
+	$Logic/OrderTimer.start()
+	
+	# if tutorial day, start with an order
+	if Global.day == 0:
+		new_order()
+
+
+func end_day() -> void:
+	station_instance.get_node("Music").stop()
+	$FinishSound.play()
+	$Logic/OrderTimer.stop()
+
+
+func order_completed() -> void:
+	orders_handled += 1
+	
+	if orders_handled >= orders_todo_today:
+		end_day()
 
 
 func get_maximum_number_of_orders() -> int:

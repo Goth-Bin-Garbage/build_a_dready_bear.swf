@@ -165,6 +165,7 @@ func _on_area_2d_mouse_exited():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "order_remove":
 		print("score : ", check_order())
+		Global.main.order_completed()
 		queue_free()
 
 

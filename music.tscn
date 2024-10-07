@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://d2a5pulllfuun" path="res://audio/music/grow_eyes.mp3" id="1_we38d"]
 [ext_resource type="Script" path="res://music.gd" id="2_7n1et"]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+[node name="Music" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_we38d")
 autoplay = true
 script = ExtResource("2_7n1et")

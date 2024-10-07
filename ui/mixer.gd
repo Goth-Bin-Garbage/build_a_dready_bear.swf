@@ -160,9 +160,9 @@ func update_doll_eyes(e : GameData.DollEyes) -> bool:
 	return false
 
 
-func update_doll_eyes_count() -> bool:
+func update_doll_eyes_count(e : GameData.DollEyes) -> bool:
 	var _max : int = GameData.possible_eye_counts[GameData.possible_eye_counts.size()-1]
-	if eyes_count <= _max:
+	if eyes_count <= _max and e == eyes:
 		emit_light_puff_particles()
 		eyes_count += 1
 		return true

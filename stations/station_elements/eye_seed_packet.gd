@@ -7,6 +7,7 @@ extends Node2D
 var offset : Vector2
 
 var eye_plant_scene := preload("res://stations/station_elements/EyePlants.tscn")
+var dragging := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,16 +16,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("left_mouse_click") and mouse_on:
+	if Input.is_action_just_pressed("left_mouse_click") and mouse_on and !Global.dragging_something:
+		Global.dragging_something = true
+		dragging = true
 		offset = get_global_mouse_position() - global_position
 		self.rotate(-PI / 4)
 		
-	if Input.is_action_pressed("left_mouse_click") and mouse_on:
+	if dragging:
 		global_position = get_global_mouse_position() - offset
 	
 	if Input.is_action_just_released("left_mouse_click"):
+		Global.dragging_something = false
 		var tween = get_tree().create_tween()
 		self.rotation = 0
+		dragging = false
 		tween.tween_property(self, "global_position",home_pos,0.2).set_ease(Tween.EASE_OUT)
 
 

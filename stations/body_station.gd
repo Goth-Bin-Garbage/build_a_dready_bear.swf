@@ -1,8 +1,7 @@
 extends Node2D
 
-@onready var mouse_on : bool = false
-# 1 = small, 2 = med, 3 = big
-@onready var size : int = 0
+var mouse_on_stuffing := false
+var mouse_on_skin := false
 
 @onready var timer : Timer = $Timer
 @onready var progress_window : Sprite2D = $ProgressWindow
@@ -11,36 +10,36 @@ var body_part = preload("res://stations/station_elements/BodyPart.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	progress_window.position = $ProgressRest.position
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if mouse_on:
-		var tween = get_tree().create_tween()
-		if Input.is_action_just_pressed("left_mouse_click"):
-			if size == 0:
-				timer.start()
-			tween.tween_property(progress_window, "position", $ProgressUp.position,0.2).set_ease(Tween.EASE_OUT)
-		
-		if Input.is_action_pressed("left_mouse_click"):
-			pass
-		
-		elif Input.is_action_just_released("left_mouse_click"):
-			timer.stop()
-			tween.tween_property(progress_window, "global_position",$ProgressRest.position,0.2).set_ease(Tween.EASE_OUT)
-			
-			var new_body = body_part.instantiate()
-			new_body.size = size
-			self.add_child(new_body)
-			new_body.position = $BodySpawn.position
+	if Input.is_action_just_pressed("left_mouse_click") and (mouse_on_skin || mouse_on_stuffing):
+		var _material_instance := body_part.instantiate()
+		_material_instance.global_position = get_viewport().get_mouse_position()
+		var _t : GameData.DollMaterials
+		if mouse_on_skin:
+			_t = GameData.DollMaterials.SKIN
+		elif mouse_on_stuffing:
+			_t = GameData.DollMaterials.STUFFING
+		_material_instance.get_node("Sprite2D").texture = GameData.doll_material_sprites[_t]
+		_material_instance.material_type = _t
+		Global.dragging_something = true
+		_material_instance.dragging = true
+		$Materials.add_child(_material_instance)
 
-func _on_area_2d_mouse_entered():
-	mouse_on = true
 
-func _on_area_2d_mouse_exited():
-	mouse_on = false
+func _on_area_skin_mouse_entered():
+	mouse_on_skin = true
 
-func _on_timer_timeout():
-	if size < 3:
-		size += 1
-		timer.start()
+
+func _on_area_skin_mouse_exited():
+	mouse_on_skin = false
+	
+	
+func _on_area_stuffing_mouse_entered():
+	mouse_on_stuffing = true
+
+
+func _on_area_stuffing_mouse_exited():
+	mouse_on_stuffing = false

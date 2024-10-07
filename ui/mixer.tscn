@@ -148,7 +148,6 @@ offset_left = 14.5349
 offset_top = -40.6977
 offset_right = 93.5349
 offset_bottom = 66.3023
-text = "x1"
 label_settings = SubResource("LabelSettings_b1fex")
 
 [node name="SpriteStuffing" type="Sprite2D" parent="MixerContents"]
@@ -161,21 +160,19 @@ offset_left = 122.093
 offset_top = 61.0465
 offset_right = 201.093
 offset_bottom = 168.047
-text = "x1"
+label_settings = SubResource("LabelSettings_b1fex")
+
+[node name="LabelSkin" type="Label" parent="MixerContents"]
+offset_left = -110.465
+offset_top = 66.8604
+offset_right = -31.4651
+offset_bottom = 173.86
 label_settings = SubResource("LabelSettings_b1fex")
 
 [node name="SpriteSkin" type="Sprite2D" parent="MixerContents"]
 position = Vector2(-156.977, 116.279)
 scale = Vector2(0.318607, 0.318607)
 texture = ExtResource("15_dp3vm")
-
-[node name="LabelSkin" type="Label" parent="MixerContents"]
-offset_left = -116.279
-offset_top = 63.9535
-offset_right = -37.2791
-offset_bottom = 170.953
-text = "x1"
-label_settings = SubResource("LabelSettings_b1fex")
 
 [node name="MixerContentsEffectTimer" type="Timer" parent="."]
 wait_time = 0.5

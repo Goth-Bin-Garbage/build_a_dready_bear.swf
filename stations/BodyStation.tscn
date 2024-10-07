@@ -1,44 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://5q0jxdblaucs"]
+[gd_scene load_steps=5 format=3 uid="uid://5q0jxdblaucs"]
 
 [ext_resource type="Script" path="res://stations/body_station.gd" id="1_vn254"]
-[ext_resource type="Texture2D" uid="uid://cfi5cf3pay6lg" path="res://sprites/emoji.png" id="2_7gaxd"]
 [ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="2_xhv2n"]
 [ext_resource type="AudioStream" uid="uid://ba17up7pxv17j" path="res://audio/music/body.mp3" id="3_00poj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b5s1"]
-size = Vector2(332, 218)
+[ext_resource type="Texture2D" uid="uid://cg8r1tjv5aleb" path="res://sprites/material_boxes.png" id="4_st7bv"]
 
 [node name="BodyStation" type="Node2D"]
 script = ExtResource("1_vn254")
 
 [node name="Music" parent="." instance=ExtResource("2_xhv2n")]
 stream = ExtResource("3_00poj")
-pitch_scale = 0.92
+pitch_scale = 0.96
 
 [node name="Background" type="Sprite2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(403, 316)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(397, 289)
+texture = ExtResource("4_st7bv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_3b5s1")
+[node name="AreaStuffing" type="Area2D" parent="."]
 
-[node name="ProgressWindow" type="Sprite2D" parent="."]
-position = Vector2(421, 757)
-scale = Vector2(0.750508, 0.36104)
-texture = ExtResource("2_7gaxd")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaStuffing"]
+polygon = PackedVector2Array(195, 138, 112, 325, 389, 333, 381, 134)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="AreaSkin" type="Area2D" parent="."]
 
-[node name="ProgressRest" type="Marker2D" parent="."]
-position = Vector2(420, 750)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaSkin"]
+polygon = PackedVector2Array(415, 139, 415, 333, 689, 349, 589, 142)
 
-[node name="ProgressUp" type="Marker2D" parent="."]
-position = Vector2(404, 320)
+[node name="Materials" type="Node2D" parent="."]
 
-[node name="BodySpawn" type="Marker2D" parent="."]
-
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="AreaStuffing" to="." method="_on_area_stuffing_mouse_entered"]
+[connection signal="mouse_exited" from="AreaStuffing" to="." method="_on_area_stuffing_mouse_exited"]
+[connection signal="mouse_entered" from="AreaSkin" to="." method="_on_area_skin_mouse_entered"]
+[connection signal="mouse_exited" from="AreaSkin" to="." method="_on_area_skin_mouse_exited"]

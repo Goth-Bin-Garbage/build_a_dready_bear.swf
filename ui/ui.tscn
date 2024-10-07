@@ -21,43 +21,27 @@ position = Vector2(90, 576)
 [node name="StationButtons" type="Node2D" parent="."]
 script = ExtResource("2_3lymi")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="StationButtons"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="StationButtons"]
 offset_right = 252.0
-offset_bottom = 68.0
+offset_bottom = 31.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="StationButtons/VBoxContainer"]
-layout_mode = 2
-
-[node name="PluckBallsButton" type="Button" parent="StationButtons/VBoxContainer/HBoxContainer2"]
+[node name="PluckBallsButton" type="Button" parent="StationButtons/HBoxContainer2"]
 layout_mode = 2
 text = "Pluck"
 
-[node name="HeadshapeButton" type="Button" parent="StationButtons/VBoxContainer/HBoxContainer2"]
+[node name="HeadshapeButton" type="Button" parent="StationButtons/HBoxContainer2"]
 layout_mode = 2
 text = "Head Shape"
 
-[node name="GrowEyesButton" type="Button" parent="StationButtons/VBoxContainer/HBoxContainer2"]
+[node name="GrowEyesButton" type="Button" parent="StationButtons/HBoxContainer2"]
 layout_mode = 2
 text = "Grow Eyes"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="StationButtons/VBoxContainer"]
-layout_mode = 2
-
-[node name="CutBodyButton" type="Button" parent="StationButtons/VBoxContainer/HBoxContainer"]
+[node name="CutBodyButton" type="Button" parent="StationButtons/HBoxContainer2"]
 layout_mode = 2
 text = "Cut Body"
 
-[node name="FillLimbsButton" type="Button" parent="StationButtons/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Fill Limbs"
-
-[node name="ShakeButton" type="Button" parent="StationButtons/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Shake"
-
-[connection signal="pressed" from="StationButtons/VBoxContainer/HBoxContainer2/PluckBallsButton" to="StationButtons" method="_on_pluck_balls_button_pressed"]
-[connection signal="pressed" from="StationButtons/VBoxContainer/HBoxContainer2/HeadshapeButton" to="StationButtons" method="_on_headshape_button_pressed"]
-[connection signal="pressed" from="StationButtons/VBoxContainer/HBoxContainer2/GrowEyesButton" to="StationButtons" method="_on_grow_eyes_button_pressed"]
-[connection signal="pressed" from="StationButtons/VBoxContainer/HBoxContainer/CutBodyButton" to="StationButtons" method="_on_cut_body_button_pressed"]
-[connection signal="pressed" from="StationButtons/VBoxContainer/HBoxContainer/FillLimbsButton" to="StationButtons" method="_on_fill_limbs_button_pressed"]
-[connection signal="pressed" from="StationButtons/VBoxContainer/HBoxContainer/ShakeButton" to="StationButtons" method="_on_shake_button_pressed"]
+[connection signal="pressed" from="StationButtons/HBoxContainer2/PluckBallsButton" to="StationButtons" method="_on_pluck_balls_button_pressed"]
+[connection signal="pressed" from="StationButtons/HBoxContainer2/HeadshapeButton" to="StationButtons" method="_on_headshape_button_pressed"]
+[connection signal="pressed" from="StationButtons/HBoxContainer2/GrowEyesButton" to="StationButtons" method="_on_grow_eyes_button_pressed"]
+[connection signal="pressed" from="StationButtons/HBoxContainer2/CutBodyButton" to="StationButtons" method="_on_cut_body_button_pressed"]

@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwfpt18colo41"]
+[gd_scene load_steps=4 format=3 uid="uid://cwfpt18colo41"]
 
 [ext_resource type="Script" path="res://stations/station_elements/body_part.gd" id="1_ug2n6"]
+[ext_resource type="Texture2D" uid="uid://bededruqh5sox" path="res://sprites/material_stuffing.png" id="2_gkyf5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3tog"]
+size = Vector2(82, 76)
 
 [node name="BodyPart" type="Node2D"]
 script = ExtResource("1_ug2n6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.209581, 0.209581)
+texture = ExtResource("2_gkyf5")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["mixer_droppable"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_f3tog")

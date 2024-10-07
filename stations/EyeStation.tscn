@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d44tf5ky4x23" path="res://music.tscn" id="1_u72si"]
 [ext_resource type="Texture2D" uid="uid://camy5w6j8pap8" path="res://sprites/spr_grow_eyes_placeholder.png" id="2_1llut"]
-[ext_resource type="PackedScene" uid="uid://ce7ibreq8f4fh" path="res://stations/station_elements/EyePlantPlot.tscn" id="3_f720y"]
+[ext_resource type="PackedScene" path="res://stations/station_elements/EyePlantPlot.tscn" id="3_f720y"]
 
 [sub_resource type="Gradient" id="Gradient_tfn0n"]
 offsets = PackedFloat32Array(0.409091, 1)

@@ -251,16 +251,21 @@ func update_content_preview():
 		$MixerContents/SpriteStuffing.hide()
 		$MixerContents/LabelStuffing.hide()
 	else:
+		has_anything = true
 		$MixerContents/SpriteStuffing.show()
 		$MixerContents/LabelStuffing.show()
-		$MixerContents/LabelStuffing.text= "x" + str(material_stuffing_count)
+		if material_stuffing_count > 1:
+			$MixerContents/LabelStuffing.text = "x" + str(material_stuffing_count)
+	
 	if material_skin_count <= 0:
 		$MixerContents/SpriteSkin.hide()
-		$MixerContents/LabelSkin.hide()
+		$MixerContents/LabelSkin.show()
 	else:
+		has_anything = true
 		$MixerContents/SpriteSkin.show()
-		$MixerContents/LabelStkin.show()
-		$MixerContents/LabelSkin.text= "x" + str(material_skin_count)
+		$MixerContents/LabelSkin.show()
+		if material_skin_count > 1:
+			$MixerContents/LabelSkin.text = "x" + str(material_skin_count)
 	
 	if !has_anything:
 		mixer_contents_scale = 0

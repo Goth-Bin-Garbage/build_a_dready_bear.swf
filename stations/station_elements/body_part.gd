@@ -1,32 +1,43 @@
 extends Node2D
 
-@onready var mouse_on : bool = false
+var plucked : bool = false
+var mouse_on : bool = false
+var clicked_on : bool = false
+var clickable : bool = true
+
 var offset : Vector2
+var material_type : GameData.DollMaterials
 
-@export var size : int = 0
-@onready var sprite_path : Array = []
-@export var part_type : String = "Body"
+var acceleration_y := 0.0
+var velocity_y := 0.0
 
-# Called when the node enters the scene tree for the first time.
+var dragging := false
+
 func _ready():
-	if part_type == "Body":
-		$Body.visible = true
-		$Stuffing.visible = false
-	if part_type == "Stuffing":
-		$Body.visible = false
-		$Stuffing.visible = true
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#if !clicked_on:
-	#	self.position.y += 0.1
-	
-	if mouse_on:
-		if Input.is_action_just_pressed("left_mouse_click"):
-			offset = get_global_mouse_position() - global_position
+	if !dragging:
+		acceleration_y = 0.03
+		velocity_y += acceleration_y
 		
-		if Input.is_action_pressed("left_mouse_click"):
-			global_position = get_global_mouse_position() - offset
+		self.position.y += velocity_y
 		
-		elif Input.is_action_just_released("left_mouse_click"):
-			pass
+		if self.position.y >= 600:
+			queue_free()
+	else:
+		global_position = get_viewport().get_mouse_position()
+		
+		if Input.is_action_just_released("left_mouse_click"):
+			dragging = false
+			Global.dragging_something = false
+
+
+func insert_into_mixer(mixer) -> void:
+	var successful_insert : bool
+	if material_type == GameData.DollMaterials.STUFFING:
+		successful_insert = mixer.update_doll_material_stuffing_count()
+	elif material_type == GameData.DollMaterials.SKIN:
+		successful_insert = mixer.update_doll_material_skin_count()
+	if successful_insert:
+		queue_free()

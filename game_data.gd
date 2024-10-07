@@ -31,6 +31,7 @@ enum DollPattern {NONE, STRIPE, GRID, POLKA}
 enum DollHeadShape {NONE, BEAR, KITTO, FROG}
 enum DollEyes {NONE, EYEZALEA, BUTTONS}
 enum DollLimbs {NONE, PAW, STRIPED, FLIPPER, WINGS}
+enum DollMaterials {NONE, STUFFING, SKIN}
 
 var doll_colors : Dictionary = {
 	DollColor.RED : Color.RED,
@@ -54,4 +55,10 @@ var doll_eye_sprites : Dictionary = {
 	DollEyes.EYEZALEA : load("res://sprites/eyezalea.png"),
 	DollEyes.BUTTONS : load("res://sprites/buttonbuds.png")
 }
+
+var doll_material_sprites : Dictionary = {
+	DollMaterials.STUFFING : load("res://sprites/material_stuffing.png"),
+	DollMaterials.SKIN : load("res://sprites/material_skin.png")
+}
+
 # similar for, e.g., pattern, headshape... maybe return sprites?

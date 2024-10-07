@@ -159,7 +159,7 @@ func calculate_x() -> float:
 	var _w := 115
 	
 	# offset for right-most order
-	var _o := -50
+	var _o := -60
 	
 	return Global.window_size.x + _o - _w * i
 

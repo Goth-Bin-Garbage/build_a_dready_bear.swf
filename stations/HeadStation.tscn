@@ -22,7 +22,6 @@ position = Vector2(93, 297)
 
 [node name="HeadDials2" parent="Dials" instance=ExtResource("3_2khno")]
 position = Vector2(237, 290)
-head_type = 1
 
 [node name="HeadDials3" parent="Dials" instance=ExtResource("3_2khno")]
 position = Vector2(397, 287)

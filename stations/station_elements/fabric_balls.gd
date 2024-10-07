@@ -16,7 +16,17 @@ var velocity_y := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	if fabric_type == "Color":
+		$Sprite2D.modulate = GameData.doll_colors[color]
+	if fabric_type == "Pattern":
+		$Sprite2D/Pattern.visible = true
+		match pattern:
+			GameData.DollPattern.STRIPE:
+				$Sprite2D/Pattern.texture = load("res://sprites/stripes.png")
+			GameData.DollPattern.POLKA:
+				$Sprite2D/Pattern.texture = load("res://sprites/polka.png")
+			GameData.DollPattern.GRID:
+				$Sprite2D/Pattern.texture = load("res://sprites/plaid.png")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

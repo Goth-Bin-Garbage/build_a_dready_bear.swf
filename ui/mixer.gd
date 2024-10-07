@@ -23,7 +23,8 @@ var pattern : GameData.DollPattern
 var head_shape : GameData.DollHeadShape
 var eyes : GameData.DollEyes
 var eyes_count : int
-var material_count : int
+var material_stuffing_count : int
+var material_skin_count : int
 
 @onready var area : Area2D = $Area2D
 var hovering_over_order : Node2D
@@ -167,11 +168,21 @@ func update_doll_eyes_count() -> bool:
 		return true
 	return false
 
-func update_doll_material_count() -> bool:
+
+func update_doll_material_stuffing_count() -> bool:
 	var _max : int = GameData.possible_material_counts[GameData.possible_material_counts.size()-1]
-	if material_count <= _max:
+	if material_stuffing_count <= _max:
 		emit_light_puff_particles()
-		material_count += 1
+		material_stuffing_count += 1
+		return true
+	return false
+
+
+func update_doll_material_skin_count() -> bool:
+	var _max : int = GameData.possible_material_counts[GameData.possible_material_counts.size()-1]
+	if material_skin_count <= _max:
+		emit_light_puff_particles()
+		material_skin_count += 1
 		return true
 	return false
 
@@ -236,9 +247,23 @@ func update_content_preview():
 		$MixerContents/Label.text = "x" + str(eyes_count)
 		$MixerContents/SpriteEye.texture = GameData.doll_eye_sprites[eyes]
 	
+	if material_stuffing_count <= 0:
+		$MixerContents/SpriteStuffing.hide()
+		$MixerContents/LabelStuffing.hide()
+	else:
+		$MixerContents/SpriteStuffing.show()
+		$MixerContents/LabelStuffing.show()
+		$MixerContents/LabelStuffing.text= "x" + str(material_stuffing_count)
+	if material_skin_count <= 0:
+		$MixerContents/SpriteSkin.hide()
+		$MixerContents/LabelSkin.hide()
+	else:
+		$MixerContents/SpriteSkin.show()
+		$MixerContents/LabelStkin.show()
+		$MixerContents/LabelSkin.text= "x" + str(material_skin_count)
+	
 	if !has_anything:
 		mixer_contents_scale = 0
-	
 
 func _on_mixer_contents_effect_timer_timeout():
 	for el in $MixerContents.get_children():

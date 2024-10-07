@@ -12,7 +12,8 @@ var given_pattern := GameData.DollPattern.NONE
 var given_head := GameData.DollHeadShape.NONE
 var given_eyes := GameData.DollEyes.NONE
 var given_eyes_count := 0
-var given_material_count := 0
+var given_material_stuffing_count := 0
+var given_material_skin_count := 0
 
 @onready var sprite_normal := $SpriteNode/SpriteNormal
 @onready var sprite_crumpled := $SpriteNode/SpriteCrumpled
@@ -84,7 +85,6 @@ func _ready():
 			
 	$SpriteNode/SpriteNormal/EyeCountLabel.text = "x " + str(eyes_count)
 	$SpriteNode/SpriteNormal/MaterialCountLabel.text = "x " + str(material_count)
-
 	
 	life_timer.wait_time = GameData.order_life_time
 	progress_bar.max_value = GameData.order_life_time
@@ -131,7 +131,8 @@ func _process(delta):
 		self.given_head = mixer_inside_me.head_shape
 		self.given_eyes = mixer_inside_me.eyes
 		self.given_eyes_count = mixer_inside_me.eyes_count
-		self.given_material_count = mixer_inside_me.material_count
+		self.given_material_stuffing_count = mixer_inside_me.material_stuffing_count
+		self.given_material_skin_count = mixer_inside_me.material_skin_count
 		self.mixer_inside_me.reset_mix()
 
 
@@ -178,8 +179,10 @@ func check_order() -> float:
 		score += 0.2
 	if self.eyes_count == self.given_eyes_count:
 		score += 0.2
-	if self.material_count == self.given_material_count:
-		score += 0.2
+	if self.material_count == self.given_material_stuffing_count:
+		score += 0.1
+	if self.material_count == self.given_material_skin_count:
+		score += 0.1
 	
 	return score
 

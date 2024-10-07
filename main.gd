@@ -110,6 +110,7 @@ func new_order() -> void:
 	orders.append(order_instance)
 	orders_received += 1
 
+
 func order_completed() -> void:
 	orders_handled += 1
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://2pyds7hom2cf"]
+[gd_scene load_steps=22 format=3 uid="uid://2pyds7hom2cf"]
 
 [ext_resource type="Texture2D" uid="uid://8pwpj5t4qx76" path="res://sprites/mixer.png" id="1_7bdv8"]
 [ext_resource type="Script" path="res://ui/mixer.gd" id="1_v1nhw"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://baret224tlvwb" path="res://sprites/ball.png" id="11_s8or1"]
 [ext_resource type="Texture2D" uid="uid://uyg05lmijmdd" path="res://sprites/eyezalea.png" id="12_2f5b3"]
 [ext_resource type="Texture2D" uid="uid://bkudh7i511aof" path="res://sprites/plaid.png" id="12_lsbpq"]
+[ext_resource type="Texture2D" uid="uid://bededruqh5sox" path="res://sprites/material_stuffing.png" id="14_c7rpf"]
+[ext_resource type="Texture2D" uid="uid://btvy7rrjkdq1h" path="res://sprites/material_skin.png" id="15_dp3vm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayyef"]
 size = Vector2(92, 180)
@@ -113,38 +115,65 @@ stream = ExtResource("8_c35e4")
 
 [node name="MixerContents" type="Sprite2D" parent="."]
 position = Vector2(1, -167)
-scale = Vector2(0.308, 0.308)
+scale = Vector2(0.344, 0.344)
 texture = ExtResource("9_20vqx")
 
 [node name="SpriteHead" type="Sprite2D" parent="MixerContents"]
-position = Vector2(-97.4026, -51.9481)
-scale = Vector2(0.436131, 0.436131)
+position = Vector2(-123.377, -84.4156)
+scale = Vector2(0.369641, 0.369641)
 texture = ExtResource("10_mpbg7")
 
 [node name="SpriteColor" type="Sprite2D" parent="MixerContents"]
-position = Vector2(25.974, -133.117)
-scale = Vector2(0.136296, 0.136296)
+position = Vector2(17.4419, -145.349)
+scale = Vector2(0.148182, 0.148182)
 texture = ExtResource("11_s8or1")
 
 [node name="SpritePattern" type="Sprite2D" parent="MixerContents"]
 clip_children = 2
-position = Vector2(107.143, -45.4545)
-scale = Vector2(0.136296, 0.136296)
+position = Vector2(126.623, -68.1818)
+scale = Vector2(0.152144, 0.152144)
 texture = ExtResource("11_s8or1")
 
 [node name="Pattern" type="Sprite2D" parent="MixerContents/SpritePattern"]
+scale = Vector2(0.904845, 0.904845)
 texture = ExtResource("12_lsbpq")
 
 [node name="SpriteEye" type="Sprite2D" parent="MixerContents"]
-position = Vector2(-113.636, 94.1558)
-scale = Vector2(0.175237, 0.175237)
+position = Vector2(-34.8837, 8.72093)
+scale = Vector2(0.138446, 0.138446)
 texture = ExtResource("12_2f5b3")
 
 [node name="Label" type="Label" parent="MixerContents"]
-offset_left = -52.0
-offset_top = 81.0
-offset_right = -2.0
-offset_bottom = 148.0
+offset_left = 14.5349
+offset_top = -40.6977
+offset_right = 93.5349
+offset_bottom = 66.3023
+text = "x1"
+label_settings = SubResource("LabelSettings_b1fex")
+
+[node name="SpriteStuffing" type="Sprite2D" parent="MixerContents"]
+position = Vector2(61.0465, 122.093)
+scale = Vector2(0.369391, 0.369391)
+texture = ExtResource("14_c7rpf")
+
+[node name="LabelStuffing" type="Label" parent="MixerContents"]
+offset_left = 122.093
+offset_top = 61.0465
+offset_right = 201.093
+offset_bottom = 168.047
+text = "x1"
+label_settings = SubResource("LabelSettings_b1fex")
+
+[node name="SpriteSkin" type="Sprite2D" parent="MixerContents"]
+position = Vector2(-156.977, 116.279)
+scale = Vector2(0.318607, 0.318607)
+texture = ExtResource("15_dp3vm")
+
+[node name="LabelSkin" type="Label" parent="MixerContents"]
+offset_left = -116.279
+offset_top = 63.9535
+offset_right = -37.2791
+offset_bottom = 170.953
 text = "x1"
 label_settings = SubResource("LabelSettings_b1fex")
 

@@ -3,7 +3,7 @@ extends Node2D
 @onready var clickable_eye : Node2D = $Eyes
 @onready var plant_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var plant_type : GameData.DollEyes = GameData.DollEyes.EYEZALEA
+@export var plant_type : GameData.DollEyes = GameData.DollEyes.EYEZALEA
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,8 +12,12 @@ func _ready():
 	
 	if plant_type == GameData.DollEyes.EYEZALEA:
 		plant_sprite.play("Eyezalea")
+		clickable_eye.sprite_path = "res://sprites/eyezalea.png"
+		clickable_eye.position = $EyezaleaMarker.position
 	if plant_type == GameData.DollEyes.BUTTONS:
 		plant_sprite.play("Buttonbud")
+		clickable_eye.sprite_path = "res://sprites/buttonbuds.png"
+		clickable_eye.position = $ButtonbudMarker.position
 	
 	plant_sprite.frame = 0
 	plant_sprite.pause()

@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var sprite_path : String = "res://sprites/eyezalea.png"
+
 @onready var clickable : bool = false
 @onready var mouse_on : bool = false
 @export var plucked : bool = false
@@ -8,10 +10,12 @@ var offset : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if visible:
+		$Sprite2D.texture = load(sprite_path)
 	if plucked && !clicked_on:
 		self.position.y += 0.1
 	

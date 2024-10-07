@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce7ibreq8f4fh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyugo"]
+
+[node name="EyePlantPlot" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dyugo")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -11,6 +11,9 @@ var order_life_time := 60.0 * 2 # 2 minutes
 var number_orders_first_day := 3
 var number_orders_second_day := 6
 
+var possible_eye_counts := [1,2,3]
+var possible_material_counts := [1,2]
+
 # References to stuff
 enum Station {FABRIC, HEAD, EYES, BODY, LIMBS, MIX}
 var stations_dir = "res://stations/"

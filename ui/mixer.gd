@@ -23,6 +23,7 @@ var pattern : GameData.DollPattern
 var head_shape : GameData.DollHeadShape
 var eyes : GameData.DollEyes
 var eyes_count : int
+var material_count : int
 
 @onready var area : Area2D = $Area2D
 var hovering_over_order : Node2D
@@ -144,9 +145,21 @@ func update_doll_eyes(e : GameData.DollEyes) -> bool:
 	return false
 
 
-func update_doll_eyes_count() -> void:
-	emit_light_puff_particles()
-	eyes_count += 1
+func update_doll_eyes_count() -> bool:
+	var _max : int = GameData.possible_eye_counts[GameData.possible_eye_counts.size()-1]
+	if eyes_count <= _max:
+		emit_light_puff_particles()
+		eyes_count += 1
+		return true
+	return false
+
+func update_doll_material_count() -> bool:
+	var _max : int = GameData.possible_material_counts[GameData.possible_material_counts.size()-1]
+	if material_count <= _max:
+		emit_light_puff_particles()
+		material_count += 1
+		return true
+	return false
 
 
 func _on_area_2d_mouse_entered():

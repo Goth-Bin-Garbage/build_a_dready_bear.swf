@@ -4,13 +4,15 @@ var color := Global.get_random_doll_color()
 var pattern := Global.get_random_doll_pattern()
 var head_shape := Global.get_random_doll_headshape()
 var eyes := Global.get_random_doll_eyes()
-var eyes_count : int = [1,2,3].pick_random()
+var eyes_count : int = GameData.possible_eye_counts.pick_random()
+var material_count : int = GameData.possible_material_counts.pick_random()
 
 var given_color := GameData.DollColor.NONE
 var given_pattern := GameData.DollPattern.NONE
 var given_head := GameData.DollHeadShape.NONE
 var given_eyes := GameData.DollEyes.NONE
 var given_eyes_count := 0
+var given_material_count := 0
 
 @onready var sprite_normal := $SpriteNode/SpriteNormal
 @onready var sprite_crumpled := $SpriteNode/SpriteCrumpled
@@ -70,9 +72,18 @@ func _ready():
 			$SpriteNode/SpriteNormal/HeadSprite/SpriteCat.show()
 		GameData.DollHeadShape.FROG:
 			$SpriteNode/SpriteNormal/HeadSprite/SpriteFrog.show()
+	
+	$SpriteNode/SpriteNormal/EyeSprite/SpriteEyezalea.hide()
+	$SpriteNode/SpriteNormal/EyeSprite/SpriteButtonBuds.hide()
+	
+	match eyes:
+		GameData.DollEyes.EYEZALEA:
+			$SpriteNode/SpriteNormal/EyeSprite/SpriteEyezalea.show()
+		GameData.DollEyes.BUTTONS:
+			$SpriteNode/SpriteNormal/EyeSprite/SpriteButtonBuds.show()
 			
 	$SpriteNode/SpriteNormal/EyeCountLabel.text = "x " + str(eyes_count)
-	$SpriteNode/SpriteNormal/MaterialCountLabel.text = "x 2"
+	$SpriteNode/SpriteNormal/MaterialCountLabel.text = "x " + str(material_count)
 
 	
 	life_timer.wait_time = GameData.order_life_time
@@ -120,6 +131,7 @@ func _process(delta):
 		self.given_head = mixer_inside_me.head_shape
 		self.given_eyes = mixer_inside_me.eyes
 		self.given_eyes_count = mixer_inside_me.eyes_count
+		self.given_material_count = mixer_inside_me.material_count
 		self.mixer_inside_me.reset_mix()
 
 
@@ -154,15 +166,19 @@ func calculate_x() -> float:
 func check_order() -> float:
 	var score := 0.0
 	
+	var score_piece := 1/6
+	
 	if self.color == self.given_color:
-		score += 0.2
+		score += 0.1
 	if self.pattern == self.given_pattern:
-		score += 0.2
+		score += 0.1
 	if self.head_shape == self.given_head:
 		score += 0.2
 	if self.eyes == self.given_eyes:
 		score += 0.2
 	if self.eyes_count == self.given_eyes_count:
+		score += 0.2
+	if self.material_count == self.given_material_count:
 		score += 0.2
 	
 	return score

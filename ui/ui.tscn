@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://wvb1kyxrajvi"]
+[gd_scene load_steps=8 format=3 uid="uid://wvb1kyxrajvi"]
 
 [ext_resource type="PackedScene" uid="uid://2pyds7hom2cf" path="res://ui/mixer.tscn" id="1_ebuj0"]
 [ext_resource type="Script" path="res://ui/station_buttons.gd" id="2_3lymi"]
+[ext_resource type="FontFile" uid="uid://d2m6ghn0q8df3" path="res://ui/Comic Sans MS.ttf" id="3_474f3"]
+
+[sub_resource type="Theme" id="Theme_l7xr0"]
+default_font = ExtResource("3_474f3")
+
+[sub_resource type="Theme" id="Theme_ih8i6"]
+default_font = ExtResource("3_474f3")
+
+[sub_resource type="Theme" id="Theme_2ocjw"]
+default_font = ExtResource("3_474f3")
+
+[sub_resource type="Theme" id="Theme_m64qu"]
+default_font = ExtResource("3_474f3")
 
 [node name="UI" type="Node2D"]
 
@@ -27,18 +40,22 @@ offset_bottom = 31.0
 
 [node name="PluckBallsButton" type="Button" parent="StationButtons/HBoxContainer2"]
 layout_mode = 2
+theme = SubResource("Theme_l7xr0")
 text = "Pluck"
 
 [node name="HeadshapeButton" type="Button" parent="StationButtons/HBoxContainer2"]
 layout_mode = 2
+theme = SubResource("Theme_ih8i6")
 text = "Head Shape"
 
 [node name="GrowEyesButton" type="Button" parent="StationButtons/HBoxContainer2"]
 layout_mode = 2
+theme = SubResource("Theme_2ocjw")
 text = "Grow Eyes"
 
 [node name="CutBodyButton" type="Button" parent="StationButtons/HBoxContainer2"]
 layout_mode = 2
+theme = SubResource("Theme_m64qu")
 text = "Cut Body"
 
 [connection signal="pressed" from="StationButtons/HBoxContainer2/PluckBallsButton" to="StationButtons" method="_on_pluck_balls_button_pressed"]

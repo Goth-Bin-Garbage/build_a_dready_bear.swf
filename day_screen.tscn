@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://re4dn30y8pjc"]
+[gd_scene load_steps=7 format=3 uid="uid://re4dn30y8pjc"]
 
 [ext_resource type="Script" path="res://day_screen.gd" id="1_ir3j4"]
 [ext_resource type="Texture2D" uid="uid://d3jfsjn3j7spf" path="res://sprites/title_screen.png" id="1_qpn8g"]
+[ext_resource type="FontFile" uid="uid://d2m6ghn0q8df3" path="res://ui/Comic Sans MS.ttf" id="3_eugu7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cia1q"]
 font_size = 114
 shadow_size = 11
 shadow_color = Color(0.352572, 4.42201e-07, 1.44392e-07, 1)
 shadow_offset = Vector2(5, 1)
+
+[sub_resource type="Theme" id="Theme_l8brh"]
+default_font = ExtResource("3_eugu7")
+
+[sub_resource type="Theme" id="Theme_pefw2"]
+default_font = ExtResource("3_eugu7")
+default_font_size = 20
+/fonts/Sans = ExtResource("3_eugu7")
 
 [node name="DayScreen" type="Node2D"]
 script = ExtResource("1_ir3j4")
@@ -17,10 +26,10 @@ position = Vector2(400, 300)
 texture = ExtResource("1_qpn8g")
 
 [node name="DayNumberLabel" type="Label" parent="."]
-offset_left = 33.0
-offset_top = 47.0
-offset_right = 381.0
-offset_bottom = 254.0
+offset_left = 31.0
+offset_top = 1.0
+offset_right = 379.0
+offset_bottom = 208.0
 text = "DAY 0
 "
 label_settings = SubResource("LabelSettings_cia1q")
@@ -30,6 +39,22 @@ offset_left = 574.0
 offset_top = 408.0
 offset_right = 721.0
 offset_bottom = 480.0
+theme = SubResource("Theme_l8brh")
 text = "Start"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 37.0
+offset_top = 159.0
+offset_right = 454.0
+offset_bottom = 536.0
+theme = SubResource("Theme_pefw2")
+text = "Fill the mixers with ingredients to satisfy orders!
+
+Orders come in at the top of the window. Hovering the order will show you want they want.
+
+Drop pieces into the mixer from each station.
+Hover over the mixer to see its contents.
+
+Drag the mixer to the appropriate order to deliver it."
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

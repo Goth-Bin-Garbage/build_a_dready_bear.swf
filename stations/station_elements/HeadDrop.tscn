@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://s8v8xflxej2p"]
+[gd_scene load_steps=6 format=3 uid="uid://s8v8xflxej2p"]
 
 [ext_resource type="Script" path="res://stations/station_elements/head_drop.gd" id="1_4x1qo"]
-[ext_resource type="Texture2D" uid="uid://baret224tlvwb" path="res://sprites/ball.png" id="2_gxe1v"]
-[ext_resource type="Texture2D" uid="uid://cytf8y3od1off" path="res://sprites/stripes.png" id="3_lwu2s"]
+[ext_resource type="Texture2D" uid="uid://b0m2kdlmb6136" path="res://sprites/head_cat.png" id="3_b01ae"]
+[ext_resource type="Texture2D" uid="uid://btxof6yi2uhpg" path="res://sprites/head_bear.png" id="4_545u4"]
+[ext_resource type="Texture2D" uid="uid://bkub0is61qtmj" path="res://sprites/head_frog.png" id="4_eidim"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kukia"]
 radius = 22.0227
@@ -17,14 +18,20 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-clip_children = 2
-scale = Vector2(0.0749625, 0.0749625)
-texture = ExtResource("2_gxe1v")
-
-[node name="Pattern" type="Sprite2D" parent="Sprite2D"]
+[node name="SpriteBear" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("3_lwu2s")
+scale = Vector2(0.156716, 0.156716)
+texture = ExtResource("4_545u4")
+
+[node name="SpriteCat" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.156716, 0.156716)
+texture = ExtResource("3_b01ae")
+
+[node name="SpriteFrog" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.156716, 0.156716)
+texture = ExtResource("4_eidim")
 
 [node name="Area2D" type="Area2D" parent="." groups=["mixer_droppable"]]
 

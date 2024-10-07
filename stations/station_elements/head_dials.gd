@@ -21,8 +21,16 @@ func _process(delta):
 			$ClickSound.play()
 			
 			var head_drop_instance := head_drop_scene.instantiate()
-			head_drop_instance.global_position = Vector2(global_position.x, global_position.y + 60)
+			head_drop_instance.global_position = Vector2(global_position.x, global_position.y + 70)
 			head_drop_instance.head = head_type
+			match head_type:
+				GameData.DollHeadShape.BEAR:
+					head_drop_instance.get_node("SpriteBear").show()
+				GameData.DollHeadShape.KITTO:
+					head_drop_instance.get_node("SpriteCat").show()
+				GameData.DollHeadShape.FROG:
+					head_drop_instance.get_node("SpriteFrog").show()
+			head_drop_instance.rotation = randf()*PI*2
 			get_parent().get_parent().get_node("Drops").add_child(head_drop_instance)
 			
 			# while(self.rotation_degrees <= 90.0):

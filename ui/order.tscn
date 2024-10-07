@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://peuqdai1wmub"]
+[gd_scene load_steps=13 format=3 uid="uid://peuqdai1wmub"]
 
 [ext_resource type="Script" path="res://ui/order.gd" id="1_2yje7"]
 [ext_resource type="Texture2D" uid="uid://bsnxifcb4sqdq" path="res://sprites/ticket1.png" id="2_h2yr2"]
+[ext_resource type="Texture2D" uid="uid://btxof6yi2uhpg" path="res://sprites/head_bear.png" id="3_emqhx"]
 [ext_resource type="Texture2D" uid="uid://c6awhnuot50b1" path="res://sprites/ticket2.png" id="3_t0riv"]
+[ext_resource type="Texture2D" uid="uid://b0m2kdlmb6136" path="res://sprites/head_cat.png" id="4_0xeyg"]
+[ext_resource type="Texture2D" uid="uid://bkub0is61qtmj" path="res://sprites/head_frog.png" id="5_dv5ac"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m6q8c"]
 font_color = Color(0, 0, 0, 1)
@@ -72,7 +75,25 @@ position = Vector2(0, -158)
 position = Vector2(-3, 4)
 texture = ExtResource("2_h2yr2")
 
+[node name="HeadSprite" type="Node2D" parent="SpriteNode/SpriteNormal"]
+
+[node name="SpriteBear" type="Sprite2D" parent="SpriteNode/SpriteNormal/HeadSprite"]
+position = Vector2(1, -11)
+scale = Vector2(0.115672, 0.115672)
+texture = ExtResource("3_emqhx")
+
+[node name="SpriteCat" type="Sprite2D" parent="SpriteNode/SpriteNormal/HeadSprite"]
+position = Vector2(1, -11)
+scale = Vector2(0.115672, 0.115672)
+texture = ExtResource("4_0xeyg")
+
+[node name="SpriteFrog" type="Sprite2D" parent="SpriteNode/SpriteNormal/HeadSprite"]
+position = Vector2(1, -11)
+scale = Vector2(0.115672, 0.115672)
+texture = ExtResource("5_dv5ac")
+
 [node name="EyesLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+visible = false
 offset_left = -28.0
 offset_top = 35.0
 offset_right = 23.0
@@ -81,6 +102,7 @@ text = "eyes"
 label_settings = SubResource("LabelSettings_m6q8c")
 
 [node name="PatternLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+visible = false
 offset_left = -30.0
 offset_top = 4.0
 offset_right = 29.0
@@ -89,6 +111,7 @@ text = "pattern"
 label_settings = SubResource("LabelSettings_m6q8c")
 
 [node name="HeadLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+visible = false
 offset_left = -27.0
 offset_top = -59.0
 offset_right = 32.0
@@ -97,6 +120,7 @@ text = "head"
 label_settings = SubResource("LabelSettings_m6q8c")
 
 [node name="ColorLabel" type="Label" parent="SpriteNode/SpriteNormal"]
+visible = false
 offset_left = -30.0
 offset_top = -27.0
 offset_right = 29.0
@@ -105,6 +129,7 @@ text = "color"
 label_settings = SubResource("LabelSettings_m6q8c")
 
 [node name="SpriteCrumpled" type="Sprite2D" parent="SpriteNode"]
+visible = false
 position = Vector2(-4, -64)
 texture = ExtResource("3_t0riv")
 

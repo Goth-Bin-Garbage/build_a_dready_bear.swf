@@ -65,6 +65,9 @@ func _on_area_2d_mouse_entered():
 	mouse_on = true
 
 func _on_area_2d_mouse_exited():
+	if clicked_on:
+		clicked_on = false
+		Global.dragging_something = false
 	mouse_on = false
 
 func regen_fabric():

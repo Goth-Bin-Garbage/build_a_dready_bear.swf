@@ -124,6 +124,12 @@ func update_doll_color(c : GameData.DollColor) -> bool:
 
 func update_doll_head(h : GameData.DollHeadShape) -> bool:
 	if head_shape == GameData.DollHeadShape.NONE:
+		if h == GameData.DollHeadShape.BEAR:
+			$SoulBearSound.play()
+		elif h == GameData.DollHeadShape.KITTO:
+			$SoulCatSound.play()
+		elif h == GameData.DollHeadShape.FROG:
+			$SoulFrogSound.play()
 		head_shape = h
 		emit_light_puff_particles()
 		return true

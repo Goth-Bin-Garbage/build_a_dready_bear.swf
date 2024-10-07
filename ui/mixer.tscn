@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://2pyds7hom2cf"]
+[gd_scene load_steps=13 format=3 uid="uid://2pyds7hom2cf"]
 
 [ext_resource type="Texture2D" uid="uid://8pwpj5t4qx76" path="res://sprites/mixer.png" id="1_7bdv8"]
 [ext_resource type="Script" path="res://ui/mixer.gd" id="1_v1nhw"]
 [ext_resource type="Texture2D" uid="uid://d30w5y18msjvt" path="res://sprites/puff.png" id="3_ycsa0"]
 [ext_resource type="Texture2D" uid="uid://cgbc1eho2xvwx" path="res://sprites/lightpuff.png" id="4_c1gpv"]
 [ext_resource type="AudioStream" uid="uid://c4pe7tge4w72a" path="res://audio/sfx/puff.wav" id="5_3642g"]
+[ext_resource type="AudioStream" uid="uid://k678yq0xhdu2" path="res://audio/sfx/soul_bear.wav" id="6_itk4d"]
+[ext_resource type="AudioStream" uid="uid://drdt3gxtauwuu" path="res://audio/sfx/soul_cat.wav" id="7_i25ye"]
+[ext_resource type="AudioStream" uid="uid://dssxjm630wv4e" path="res://audio/sfx/soul_frog.wav" id="8_c35e4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayyef"]
 size = Vector2(92, 180)
@@ -85,6 +88,15 @@ scale_amount_curve = SubResource("Curve_dt7yd")
 [node name="PuffSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_3642g")
 pitch_scale = 0.96
+
+[node name="SoulBearSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_itk4d")
+
+[node name="SoulCatSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_i25ye")
+
+[node name="SoulFrogSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_c35e4")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

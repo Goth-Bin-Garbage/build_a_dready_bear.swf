@@ -17,7 +17,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("left_mouse_click"):
 		offset = get_global_mouse_position() - global_position
-		self.rotate(PI / 4)
+		self.rotate(-PI / 4)
 		
 		if Input.is_action_pressed("left_mouse_click"):
 			global_position = get_global_mouse_position() - offset
